@@ -35,10 +35,10 @@ The first dataset is from **PISA**, and the second from **the World Bank**. Both
 1. PISA: 
 We downloaded ●● and picked the following three datas up to use as dependent variables:
 Variable|Variable Name|Description|
-|:--|:--|:--
-DV|math|Mathmatics mean score(2012)
-DV|reading||Readind mean score(2012)
-DV|ps|Prolem Solving mean score(2012)
+|:--|:--|:--|
+DV|math|Mathmatics mean score(2012)|
+DV|reading||Readind mean score(2012)|
+DV|ps|Prolem Solving mean score(2012)|
 
 2. The World Bank:
 Taking aveirability into account, we picked the following variables up as explanetory variables from the World Bank Data.
