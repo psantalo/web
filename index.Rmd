@@ -40,18 +40,19 @@ We downloaded ●● and picked the following three datas up to use as dependent
 
 2. The World Bank:
 Taking aveirability into account, we picked the following variables up as explanetory variables from the World Bank Data.
- - GDP per Capita (current US$)
- - Government expenditure on education, total (% of GDP)
- - population
- - population density
- - Pupil-teacher ratio in primary education
- - Duration of compulsory education (years)
 
-Then, we add the following explanetory variables to see the affect of interned accessibility on student's ability.
- - internet users (per 100 people)
- - mobile celler subscription (per 100 people)
+|Variable Name|Description|
+|:--|:--|
+|GDPperc|GDP per Capita (current US$)|
+|expend|Government expenditure on education, total (% of GDP)|
+|pop|Population, total|
+|popd| Population density (people per sq. km of land area)
+|rteacher|Primary school pupil-teacher ratio is the average number of pupils per teacher in primary school|
+|eyear|Number of years that children are legally obliged to attend school|
+|internet|internet users (per 100 people). Internet users are individuals who have used the Internet (from any location) in the last 12 months. Internet can be used via a computer, mobile phone, personal digital assistant, games machine, digital TV etc.|
+|mobile|Mobile cellular subscriptions (per 100 people)|
 
-In order to produce a tangible statistical analysis we have cleaned and merged the relevant data of both datasets. Then, we have generate tables and figures to relate the data with the aim of addressing, as well as possible, our researching question to begin to determine whether our hypothesis is correct or not.
+We have cleaned and merged the relevant data of both datasets. Then, we have generate tables and figures to relate the data with the aim of addressing, as well as possible, our researching question to begin to determine whether our hypothesis is correct or not.
 
 
 ```{r,echo=FALSE}
