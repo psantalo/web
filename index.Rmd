@@ -1,28 +1,117 @@
 ---
 title: "index.Rmd"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(stargazer)  # for summary statistics and regression tables
+library(magrittr)  # for 'piping': more readable code
+library(ggplot2)  # the ggplot2 package provides nice function for plotting
+library(interplot)  # for plotting interactions
+library(dplyr)  # for data manipulation
+library(devtools)
+library(xlsx)
 ```
 
-## R Markdown
+#Introduction
+The main goal of our reserch is finding variables which affect the student's ability generally through comparison of test scores from differend countries. Especially, we will focus on how inerenet accessibility bring effects on student's ability. 
+Recently, some reserchers found that internet accessibility might bring reverse afffect on student's ability because they spend more time on net surfing and gathering information through internet without thinking.
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+#Methodology
+To analyze our research theme, we used the Data from Programme for International Student Assessment(PISA) that conducts assesment about the ......
+We picked up the result of **Mathmatics, Reading and Problem Solving** that is conductet in 2012. Also, we picked the result of 2003 Problem solving as well, which is a direct assesment of life competencies that apply across different areas of the school curriculum. This data is benefitial to analyze student's ability that is not measured by academic ability.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+Picked up coutries are depended on PISA data avairability,.....
 
-```{r cars}
-summary(cars)
+Then, we have analyzed the correlation between these variables.
+
+#Data gathering and merging process
+The first dataset is from **PISA**, and the second from **the World Bank**. Both datasets are open and can be found in their respective webpages.
+
+###Data Source
+1. PISA: 
+We downloaded ●● and picked the following three datas up to use as dependent variables:
+- Mathmatics (2012)
+- Reading (2012)
+- Problem Solving (2003, 2012)
+
+2. The World Bank:
+Taking aveirability into account, we picked the following variables up as explanetory variables from the World Bank Data.
+- GDP per Capita (current US$)
+- Government expenditure on education, total (% of GDP)
+- population
+- population density
+- Pupil-teacher ratio in primary education
+- Duration of compulsory education (years)
+
+Then, we add the following explanetory variables to see the affect of interned accessibility on student's ability.
+- internet users (per 100 people)
+- mobile celler subscription (per 100 people)
+
+In order to produce a tangible statistical analysis we have cleaned and merged the relevant data of both datasets. Then, we have generate tables and figures to relate the data with the aim of addressing, as well as possible, our researching question to begin to determine whether our hypothesis is correct or not.
+
+
+```{r,echo=FALSE}
+
 ```
 
-## Including Plots
+## Multiple Regression
+```{r , echo=FALSE}
+#Regression
+##Data install
+data <- read.xlsx("/Users/komaiyumi/Desktop/Social Sicence/web/PISA_Data.xlsx",1)
 
-You can also embed plots, for example:
+##Conducting Regression
+ma.lm <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend,data = data)
+summary(ma.lm)
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+re.lm <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = data )
+summary(re.lm)
+
+ps.lm <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = data)
+summary(ps.lm)
+
+ma2.lm <- lm(math ~ internet + mobile + log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend,data = data)
+summary(ma2.lm)
+
+re2.lm <- lm(reading ~ internet + mobile + log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend,data = data )
+summary (re2.lm)
+
+ps2.lm <- lm(ps ~ internet + mobile + log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = data)
+summary (ps2.lm)
+
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+According to the result, in the first regressio, these variables are statistically significant.
+- Math:GDP per capita
+- Reading: GDP per capita, expenditure
+- Problem solving: GDP per capita, population, pupills-teacher rate and duraion educational year in elementary 
+
+In the secound regression, GDP per capita is not statistically significant any more. Instead of GDP per capita, the number of internet users and population become statistically significant. 
+
+Especially, the number of internet users is significant at 0.1% level in math and reading. We can see it bring plus effect on the both score.However, regarding the problem solving, internet is statistically significant only at 5 % level and the effect is weaker than other 2 scores.
+
+In addition, regarding GDP per capita of math ane reading, it bring the minues effect on the both scores after the variable internet and mobile are added, though it still bring the plus effect on problem solving. Even though it is not statistically significant for math and reading, but it might possible to infere if the internet accessibility would be the same level, economically strong country's math and reading scores might be lower than economically weak countries.
+
+Also, we noticed that about the academic ability (math and reading,) internet accessibility would bring the some impact on the scores. However, it would bring less impact on the problem solving ability.
+
+Actually, there is some discussion that internet accessibility might bring reverse effect on student's thinkig ability. Therefore, next we focus on the problem solving score.
+
+###Correlation between scpre growth
+```{r,echo=FALSE}
+#Growth comparison
+##Data install
+pisa <- read.xlsx("/Users/komaiyumi/Desktop/Social Sicence/web/PISA_Data.xlsx",2)
+
+##Plot and Correlation
+p <- ggplot(pisa, aes(Internet.users.growth, Score.growth))+geom_point()
+plot(p)
+
+growth.lm <- lm(Internet.users.growth ~ Score.growth, data=pisa)
+summary(growth.lm)
+
+```
+The result shows that we cannot find any correlation between internet accessibility growth and score growth.....
