@@ -34,25 +34,26 @@ The first dataset is from **PISA**, and the second from **the World Bank**. Both
 ###Data Source
 1. PISA: 
 We downloaded ●● and picked the following three datas up to use as dependent variables:
-Variable|Variable Name|Description|
+
+|Variable|Variable Name|Description|
 |:--|:--|:--|
-DV|math|Mathmatics mean score(2012)|
-DV|reading||Readind mean score(2012)|
-DV|ps|Prolem Solving mean score(2012)|
+|DV|math|Mathmatics mean score(2012)|
+|DV|reading|Readind mean score(2012)|
+|DV|ps|Prolem Solving mean score(2012)|
 
 2. The World Bank:
 Taking aveirability into account, we picked the following variables up as explanetory variables from the World Bank Data.
 
-Variable|Variable Name|Description|
-|:--|:--|:--
-IV|GDPperc|GDP per Capita (current US$)|
-IV|expend|Government expenditure on education, total (% of GDP)|
-IV|pop|Population, total|
-IV|popd| Population density (people per sq. km of land area)
-IV|rteacher|Primary school pupil-teacher ratio is the average number of pupils per teacher in primary school|
-IV|eyear|Number of years that children are legally obliged to attend school|
-IV|internet|internet users (per 100 people). Internet users are individuals who have used the Internet (from any location) in the last 12 months. Internet can be used via a computer, mobile phone, personal digital assistant, games machine, digital TV etc.|
-IV|mobile|Mobile cellular subscriptions (per 100 people)|
+|Variable|Variable Name|Description|
+|:--|:--|:--|
+|IV|GDPperc|GDP per Capita (current US$)|
+|IV|expend|Government expenditure on education, total (% of GDP)|
+|IV|pop|Population, total|
+|IV|popd| Population density (people per sq. km of land area)
+|IV|rteacher|Primary school pupil-teacher ratio is the average number of pupils per teacher in primary school|
+|IV|eyear|Number of years that children are legally obliged to attend school|
+|IV|internet|internet users (per 100 people). Internet users are individuals who have used the Internet (from any location) in the last 12 months. Internet can be used via a computer, mobile phone, personal digital assistant, games machine, digital TV etc.|
+|IV|mobile|Mobile cellular subscriptions (per 100 people)|
 
 We have cleaned and merged the relevant data of both datasets. Then, we have generate tables and figures to relate the data with the aim of addressing, as well as possible, our researching question to begin to determine whether our hypothesis is correct or not.
 
