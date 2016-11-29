@@ -61,26 +61,55 @@ We have cleaned and merged the relevant data of both datasets. Then, we have gen
 
 
 ```{r,echo=FALSE}
-stargazer()
 
 ```
 
 ## Multiple Regression
-```{r , echo=FALSE}
+```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE}
 #Regression
 ##Data install
 data <- read.xlsx("/Users/komaiyumi/Desktop/Social Sicence/web/PISA_Data.xlsx",1)
 
 ##Conducting Regression
-###Math
+##Math
 ma.lm <- lm(math ~ log(GDPperc) + log(pop) +  popd, data=data)
-summary(ma.lm)
-ma.lm2 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend,data = data)
-summary(ma.lm)
-ma.lm3 <- lm(math ~ internet + mobile + log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend,data = data)
-summary(ma.lm2)
+ma.lm2 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = data)
+ma.lm3 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile, data = data)
+
+###Create labels
+mlabels <- c('log(GDPperc)', 'log(pop)','popd', 'rteacher', 'eyear', 'expend', 'internet','mobile','(intercept)')
+
+###Create table
+stargazer(ma.lm,ma.lm2,ma.lm3, type='text',
+          covariate.labels = mlabels,
+          dep.var.labels = ('Math Score'),
+          out='math_regression.txt',
+          title="Table:Regression Estimates of Math Score",
+          no.space=TRUE)
+
+stargazer(ma.lm,ma.lm2,ma.lm3, type='latex', header = FALSE,
+          covariate.labels = mlabels,
+          dep.var.labels = ('Math Score'),
+          title="Table:Regression Estimates of Math Score",
+          no.space=TRUE)
+
+###Why can't I get a table on PDF??
+
+stargazer(ma.lm,ma.lm2,ma.lm3, type='html',
+          covariate.labels = mlabels,
+          dep.var.labels = ('Math Score'),
+          out='math_regression.html',
+          title="Table:Regression Estimates of Math Score")
+```
 
 
+####test
+stargazer(attitude,type='text',out='nt.txt')
+stargazer(attitude,type='latex')
+stargazer(attitude,type='html')
+
+###why I can't get the table????
+```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE}
 ###Reading
 re.lm <- lm(reading ~ log(GDPperc) + log(pop) +  popd,data = data)
 re.lm2 <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = data )
@@ -113,7 +142,7 @@ Also, we noticed that about the academic ability (math and reading,) internet ac
 
 Actually, there is some discussion that internet accessibility might bring reverse effect on student's thinkig ability. Therefore, next we focus on the problem solving score.
 
-###Correlation between scpre growth
+###Correlation between score growth
 ```{r,echo=FALSE}
 #Growth comparison
 ##Data install
