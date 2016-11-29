@@ -14,6 +14,8 @@ library(interplot)  # for plotting interactions
 library(dplyr)  # for data manipulation
 library(devtools)
 library(xlsx)
+library(knitr)
+
 ```
 
 #Introduction
@@ -33,10 +35,10 @@ The first dataset is from **PISA**, and the second from **the World Bank**. Both
 
 ###Data Source
 1. PISA: 
-We downloaded ●● and picked the following three datas up to use as dependent variables:
+We downloaded .... and picked the following three datas up to use as dependent variables:
 
 |Variable|Variable Name|Description|
-|:--|:--|:--|
+|:--------|:------------------|:-----------------------------|
 |DV|math|Mathmatics mean score(2012)|
 |DV|reading|Readind mean score(2012)|
 |DV|ps|Prolem Solving mean score(2012)|
@@ -45,7 +47,7 @@ We downloaded ●● and picked the following three datas up to use as dependent
 Taking aveirability into account, we picked the following variables up as explanetory variables from the World Bank Data.
 
 |Variable|Variable Name|Description|
-|:--|:--|:--|
+|:--------|:---------------|:--------------------------------|
 |IV|GDPperc|GDP per Capita (current US$)|
 |IV|expend|Government expenditure on education, total (% of GDP)|
 |IV|pop|Population, total|
@@ -59,6 +61,7 @@ We have cleaned and merged the relevant data of both datasets. Then, we have gen
 
 
 ```{r,echo=FALSE}
+stargazer()
 
 ```
 
