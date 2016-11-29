@@ -93,22 +93,15 @@ stargazer(ma.lm,ma.lm2,ma.lm3, type='latex', header = FALSE,
           title="Table:Regression Estimates of Math Score",
           no.space=TRUE)
 
-###Why can't I get a table on PDF??
-
 stargazer(ma.lm,ma.lm2,ma.lm3, type='html',
           covariate.labels = mlabels,
           dep.var.labels = ('Math Score'),
           out='math_regression.html',
           title="Table:Regression Estimates of Math Score")
 ```
+###Why can't I get a table on PDF??
 
 
-####test
-stargazer(attitude,type='text',out='nt.txt')
-stargazer(attitude,type='latex')
-stargazer(attitude,type='html')
-
-###why I can't get the table????
 ```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE}
 ###Reading
 re.lm <- lm(reading ~ log(GDPperc) + log(pop) +  popd,data = data)
