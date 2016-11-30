@@ -8,6 +8,20 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```
 
+```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
+##Data install
+data <- read.xlsx("PISA_Data.xlsx",1)
+
+##Data Cleaning
+cdata <- subset(data, select = c(1,3,4,5,6,7,9,10,12,14,16,17))
+cdata <- cdata[,c(1,3,2,4,7,8,9,10,11,12,5,6)]
+
+#For Growth comparison
+##Data install
+pisa <- read.xlsx("PISA_Data.xlsx",2)
+pisa <- pisa[1:41,]
+```
+
 ##Outline
 1. Introduction
 2. Research Question
@@ -18,7 +32,6 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 ##Methodology
-
 ###Dependent Variables
 |Dependent Variable|Variable Name|Description|
 |:--------|:------------------|:----------------------------|
@@ -39,7 +52,6 @@ knitr::opts_chunk$set(echo = TRUE)
 |IV|mobile|Mobile cellular subscriptions (per 100 people)|
 
 ##Methodology
-
 ###Descriptive Statistics
 ```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
 ##Statistical Discriptions
@@ -47,35 +59,84 @@ stargazer(cdata, type="text",header = FALSE,
           title= 'Summary statistics of the variables')
 ```
 
-5.Analysis
-========================================================
+##Analysis
 ```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
+###Create labels
+mlabels <- c('log(GDPperc)', 'log(pop)','popd', 'rteacher', 'eyear', 'expend', 'internet','mobile','(intercept)')
+
 ###Math
 ma.lm <- lm(math ~ log(GDPperc) + log(pop) +  popd, data=data)
 ma.lm2 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = data)
 ma.lm3 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear+ internet + mobile, data = data)
 ma.lm4 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile, data = data)
 
-###Create labels
-mlabels <- c('log(GDPperc)', 'log(pop)','popd', 'rteacher', 'eyear', 'expend', 'internet','mobile','(intercept)')
+###Reading
+re.lm <- lm(reading ~ log(GDPperc) + log(pop) +  popd,data = cdata)
+re.lm2 <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = cdata )
+re.lm3 <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile,data = cdata )
 
-###Create table
-stargazer(ma.lm,ma.lm2,ma.lm3,
-          type='latex',header = F, 
+###Problem Solving
+ps.lm <- lm(ps ~ log(GDPperc) + log(pop) +  popd, data = cdata)
+ps.lm2 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = cdata)
+ps.lm3 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile, data = cdata)
+stargazer(ps.lm,ps.lm2,ps.lm3, type ='text',
+          header = FALSE, no.space = TRUE,
           covariate.labels = mlabels,
-          dep.var.labels = 'Math Score',
-          title="Table:Regression Estimates of Math Score",
-          no.space = TRUE,)
+          dep.var.labels = 'Problem Solving Score',
+          title="Table:Regression Estimates of Problem Solving Score")
 
 ##Comparison
-stargazer(ma.lm3,re.lm3,ps.lm3, type='latex',
+stargazer(ma.lm,ma.lm2,ma.lm3,re.lm,re.lm2,re.lm3,ps.lm,ps.lm2,ps.lm3,
+          type='latex',
           header = FALSE, no.space =TRUE,
           covariate.labels = mlabels,
-          out="comparison.text",
-          title="Table:Regression Estimates of Three Modeles")
+          out="allresult.html",
+          title="Table:Detarminants of Student's Ability",
+          font.size='tiny')
+
 ```
 
-## R Markdown
+##Analysis of Problem Solving
+```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
+
+### adding the label based on GDP per capita
+summary(data$GDPperc)
+glabel <- cut(cdata$GDPperc, breaks=c(1754,10690,20580,31350,45720,149200),
+    labels=c("low","middle-low","middle","middle-high","high"),
+    right=FALSE,include_lowest=TRUE)
+lcdata <- transform(cdata,GDPperc_label=glabel)
+
+###correlation between internet and ps score
+pplot <- ggplot(lcdata,aes(x=ps,y=internet))+
+  geom_point(aes(colour=GDPperc_label))+
+    stat_smooth(method="lm")
+```
+
+
+#Analysis of Score Growth
+```{r,echo=FALSE}
+##Labeling
+summary(pisa$GDPperc)
+g2label <- cut(pisa$GDPperc, breaks=c(1754,10690,20580,31350,45720,149200),
+    labels=c("low","middle-low","middle","middle-high","high"),
+    right=FALSE,include_lowest=TRUE)
+lpisa <- transform(pisa,GDPperc_label=g2label)
+
+##Plot and Correlation
+###score growth and the number of internet users
+p <- ggplot(lpisa, aes(INTERNET.USERS.2012..per.100.people.,Score.growth))+
+  geom_point(aes(colour = GDPperc_label))+
+  stat_smooth(method="lm")+
+  theme_bw()
+  
+###Growth of the score and the number of internet users growth
+p2 <- ggplot(lpisa, aes(Internet.users.growth, Score.growth))+
+  geom_point(aes(colour = GDPperc_label))
+
+```
+
+
+##Finding
 
 This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 

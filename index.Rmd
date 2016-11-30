@@ -1,8 +1,8 @@
 ---
 title: "Final_project.Rmd"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -15,6 +15,7 @@ library(dplyr)
 library(devtools)
 library(xlsx)
 library(knitr)
+library(DAAG)
 ```
 
 #Introduction
@@ -80,16 +81,15 @@ pisa <- pisa[1:41,]
 ##Statistical Discriptions
 stargazer(cdata, type="text",header = FALSE,
           title= 'Summary statistics of the variables')
-          
-##Conducting Regression
-###Math
-ma.lm <- lm(math ~ log(GDPperc) + log(pop) +  popd, data=data)
-ma.lm2 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = data)
-ma.lm3 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear+ internet + mobile, data = data)
-ma.lm4 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile, data = data)
 
+##Conducting Regression
 ###Create labels
 mlabels <- c('log(GDPperc)', 'log(pop)','popd', 'rteacher', 'eyear', 'expend', 'internet','mobile','(intercept)')
+
+###Math
+ma.lm <- lm(math ~ log(GDPperc) + log(pop) +  popd, data=cdata)
+ma.lm2 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data =cdata)
+ma.lm3 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile, data = cdata)
 
 ###Create table
 stargazer(ma.lm,ma.lm2,ma.lm3,ma.lm4,
@@ -97,7 +97,7 @@ stargazer(ma.lm,ma.lm2,ma.lm3,ma.lm4,
           covariate.labels = mlabels,
           dep.var.labels = 'Math Score',
           title="Table:Regression Estimates of Math Score",
-          no.space = TRUE,)
+          no.space = TRUE)
 
 ```
 
@@ -107,8 +107,7 @@ stargazer(ma.lm,ma.lm2,ma.lm3,ma.lm4,
 ###Reading
 re.lm <- lm(reading ~ log(GDPperc) + log(pop) +  popd,data = cdata)
 re.lm2 <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = cdata )
-re.lm3 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear+ internet + mobile, data = cdata)
-re.lm4 <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile,data = cdata )
+re.lm3 <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile,data = cdata )
 
 stargazer(re.lm,re.lm2,re.lm3, type='latex',
           header = FALSE, no.space = TRUE,
@@ -119,16 +118,15 @@ stargazer(re.lm,re.lm2,re.lm3, type='latex',
 ###Problem Solving
 ps.lm <- lm(ps ~ log(GDPperc) + log(pop) +  popd, data = cdata)
 ps.lm2 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = cdata)
-ps.lm3 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear+ internet + mobile, data = cdata)
-ps.lm4 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile, data = cdata)
-stargazer(ps.lm,ps.lm2,ps.lm3,ps.lm4, type ='latex',
+ps.lm3 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile, data = cdata)
+stargazer(ps.lm,ps.lm2,ps.lm3, type ='text',
           header = FALSE, no.space = TRUE,
           covariate.labels = mlabels,
-          dep.var.labels = 'Reading Score',
+          dep.var.labels = 'Problem Solving Score',
           title="Table:Regression Estimates of Problem Solving Score")
 
 ##Comparison
-stargazer(ma.lm4,re.lm4,ps.lm4, type='latex',
+stargazer(ma.lm3,re.lm3,ps.lm3, type='latex',
           header = FALSE, no.space =TRUE,
           covariate.labels = mlabels,
           out="comparison.text",
