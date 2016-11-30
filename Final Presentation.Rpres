@@ -1,0 +1,21 @@
+Title
+========================================================
+author: Pol De Santaló & Yumi Komai
+date: 12/2/2016
+autosize: true
+
+Outline
+========================================================
+1. Introduction
+2. Research Question
+3. Data
+4. Model
+5. Analysis
+6. Result
+
+Slide With Plot
+========================================================
+
+```{r, echo=FALSE}
+plot(cars)
+```
