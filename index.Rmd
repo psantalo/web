@@ -1,8 +1,8 @@
 ---
 title: "index.Rmd"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -15,6 +15,7 @@ library(dplyr)  # for data manipulation
 library(devtools)
 library(xlsx)
 library(knitr)
+library(gridExtra)
 
 ```
 
@@ -85,24 +86,37 @@ stargazer(ma.lm,ma.lm2,ma.lm3, type='html',
           covariate.labels = mlabels,
           dep.var.labels = 'Math Score',
           title="Table:Regression Estimates of Math Score")
+
+rm(a)
 ```
 
 
 
-```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE}
+```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
 ###Reading
 re.lm <- lm(reading ~ log(GDPperc) + log(pop) +  popd,data = data)
 re.lm2 <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = data )
-summary(re.lm2)
-re.lm3 <- lm(reading ~ internet + mobile + log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend,data = data )
-summary (re.lm3)
+re.lm3 <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile,data = data )
+
+stargazer(re.lm,re.lm2,re.lm3, type='html',
+          covariate.labels = mlabels,
+          dep.var.labels = 'Reading Score',
+          title="Table:Regression Estimates of Reading Score")
 
 ###Problem Solving
 ps.lm <- lm(ps ~ log(GDPperc) + log(pop) +  popd, data = data)
 ps.lm2 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = data)
-summary(ps.lm2)
-ps.lm3 <- lm(ps ~ internet + mobile + log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = data)
-summary (ps.lm3)
+ps.lm3 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile, data = data)
+stargazer(ps.lm,ps.lm2,ps.lm3, type='html',
+          covariate.labels = mlabels,
+          dep.var.labels = 'Reading Score',
+          title="Table:Regression Estimates of Problem Solving Score")
+
+##Comparison
+stargazer(ma.lm3,re.lm3,ps.lm3, type='html',
+          covariate.labels = mlabels,
+          title="Table:Regression Estimates of Three Modeles")
+
 
 ```
 

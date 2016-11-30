@@ -227,200 +227,1830 @@ $(document).ready(function () {
 </div>
 <div id="multiple-regression" class="section level2">
 <h2>Multiple Regression</h2>
-<pre><code>
-Table●:Regression Estimates of Math Score
-======================================================================================
-                                           Dependent variable:                        
-                    ------------------------------------------------------------------
-                                                Math Score                            
-                             (1)                    (2)                   (3)         
---------------------------------------------------------------------------------------
-log(GDPperc)              29.666***              22.703**               -7.883        
-                           (5.794)                (9.524)              (10.680)       
-                                                                                      
-log(pop)                    1.642                  7.587               11.018**       
-                           (3.249)                (6.643)               (5.264)       
-                                                                                      
-popd                        0.004*                 0.005                 0.003        
-                           (0.002)                (0.003)               (0.004)       
-                                                                                      
-rteacher                                          -4.035                -0.956        
-                                                  (2.616)               (2.173)       
-                                                                                      
-eyear                                             -8.544                -7.042        
-                                                  (5.699)               (4.473)       
-                                                                                      
-expend                                            11.785                -2.215        
-                                                  (7.097)               (6.412)       
-                                                                                      
-internet                                                               2.522***       
-                                                                        (0.602)       
-                                                                                      
-mobile                                                                   0.452        
-                                                                        (0.319)       
-                                                                                      
-(intercept)                145.762                216.904               240.336       
-                           (87.914)              (156.559)             (143.650)      
-                                                                                      
---------------------------------------------------------------------------------------
-Observations                  63                    34                    34          
-R2                          0.388                  0.451                 0.690        
-Adjusted R2                 0.357                  0.328                 0.591        
-Residual Std. Error    41.891 (df = 59)      45.818 (df = 27)      35.750 (df = 25)   
-F Statistic         12.455*** (df = 3; 59) 3.689*** (df = 6; 27) 6.963*** (df = 8; 25)
-======================================================================================
-Note:                                                      *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
-<pre><code>
-&lt;table style=&quot;text-align:center&quot;&gt;&lt;caption&gt;&lt;strong&gt;Table●:Regression Estimates of Math Score&lt;/strong&gt;&lt;/caption&gt;
-&lt;tr&gt;&lt;td colspan=&quot;4&quot; style=&quot;border-bottom: 1px solid black&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td colspan=&quot;3&quot;&gt;&lt;em&gt;Dependent variable:&lt;/em&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td colspan=&quot;3&quot; style=&quot;border-bottom: 1px solid black&quot;&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td colspan=&quot;3&quot;&gt;Math Score&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;(1)&lt;/td&gt;&lt;td&gt;(2)&lt;/td&gt;&lt;td&gt;(3)&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td colspan=&quot;4&quot; style=&quot;border-bottom: 1px solid black&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;log(GDPperc)&lt;/td&gt;&lt;td&gt;29.666&lt;sup&gt;***&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;22.703&lt;sup&gt;**&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;-7.883&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;(5.794)&lt;/td&gt;&lt;td&gt;(9.524)&lt;/td&gt;&lt;td&gt;(10.680)&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;log(pop)&lt;/td&gt;&lt;td&gt;1.642&lt;/td&gt;&lt;td&gt;7.587&lt;/td&gt;&lt;td&gt;11.018&lt;sup&gt;**&lt;/sup&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;(3.249)&lt;/td&gt;&lt;td&gt;(6.643)&lt;/td&gt;&lt;td&gt;(5.264)&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;popd&lt;/td&gt;&lt;td&gt;0.004&lt;sup&gt;*&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;0.005&lt;/td&gt;&lt;td&gt;0.003&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;(0.002)&lt;/td&gt;&lt;td&gt;(0.003)&lt;/td&gt;&lt;td&gt;(0.004)&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;rteacher&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;-4.035&lt;/td&gt;&lt;td&gt;-0.956&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;(2.616)&lt;/td&gt;&lt;td&gt;(2.173)&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;eyear&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;-8.544&lt;/td&gt;&lt;td&gt;-7.042&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;(5.699)&lt;/td&gt;&lt;td&gt;(4.473)&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;expend&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;11.785&lt;/td&gt;&lt;td&gt;-2.215&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;(7.097)&lt;/td&gt;&lt;td&gt;(6.412)&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;internet&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;2.522&lt;sup&gt;***&lt;/sup&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;(0.602)&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;mobile&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;0.452&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;(0.319)&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;(intercept)&lt;/td&gt;&lt;td&gt;145.762&lt;/td&gt;&lt;td&gt;216.904&lt;/td&gt;&lt;td&gt;240.336&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;(87.914)&lt;/td&gt;&lt;td&gt;(156.559)&lt;/td&gt;&lt;td&gt;(143.650)&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td colspan=&quot;4&quot; style=&quot;border-bottom: 1px solid black&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;Observations&lt;/td&gt;&lt;td&gt;63&lt;/td&gt;&lt;td&gt;34&lt;/td&gt;&lt;td&gt;34&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;R&lt;sup&gt;2&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;0.388&lt;/td&gt;&lt;td&gt;0.451&lt;/td&gt;&lt;td&gt;0.690&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;Adjusted R&lt;sup&gt;2&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;0.357&lt;/td&gt;&lt;td&gt;0.328&lt;/td&gt;&lt;td&gt;0.591&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;Residual Std. Error&lt;/td&gt;&lt;td&gt;41.891 (df = 59)&lt;/td&gt;&lt;td&gt;45.818 (df = 27)&lt;/td&gt;&lt;td&gt;35.750 (df = 25)&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;F Statistic&lt;/td&gt;&lt;td&gt;12.455&lt;sup&gt;***&lt;/sup&gt; (df = 3; 59)&lt;/td&gt;&lt;td&gt;3.689&lt;sup&gt;***&lt;/sup&gt; (df = 6; 27)&lt;/td&gt;&lt;td&gt;6.963&lt;sup&gt;***&lt;/sup&gt; (df = 8; 25)&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td colspan=&quot;4&quot; style=&quot;border-bottom: 1px solid black&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/td&gt;&lt;td colspan=&quot;3&quot; style=&quot;text-align:right&quot;&gt;&lt;sup&gt;*&lt;/sup&gt;p&lt;0.1; &lt;sup&gt;**&lt;/sup&gt;p&lt;0.05; &lt;sup&gt;***&lt;/sup&gt;p&lt;0.01&lt;/td&gt;&lt;/tr&gt;
-&lt;/table&gt;</code></pre>
-<div id="test" class="section level4">
-<h4>test</h4>
-<p>stargazer(attitude,type=‘text’,out=‘nt.txt’) stargazer(attitude,type=‘latex’) stargazer(attitude,type=‘html’)</p>
-</div>
-<div id="why-i-cant-get-the-table" class="section level3">
-<h3>why I can’t get the table????</h3>
-<pre><code>
-Call:
-lm(formula = reading ~ log(GDPperc) + log(pop) + popd + rteacher + 
-    eyear + expend, data = data)
-
-Residuals:
-     Min       1Q   Median       3Q      Max 
--111.950  -16.008    3.598   22.750   50.636 
-
-Coefficients:
-               Estimate Std. Error t value Pr(&gt;|t|)  
-(Intercept)  187.641002 129.801722   1.446   0.1598  
-log(GDPperc)  20.996377   7.896508   2.659   0.0130 *
-log(pop)       7.919981   5.507794   1.438   0.1619  
-popd           0.003439   0.002311   1.488   0.1483  
-rteacher      -2.787892   2.168506  -1.286   0.2095  
-eyear         -7.205603   4.724850  -1.525   0.1389  
-expend        13.659393   5.884454   2.321   0.0281 *
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 37.99 on 27 degrees of freedom
-  (29 observations deleted due to missingness)
-Multiple R-squared:  0.4628,    Adjusted R-squared:  0.3435 
-F-statistic: 3.877 on 6 and 27 DF,  p-value: 0.006411</code></pre>
-<pre><code>
-Call:
-lm(formula = reading ~ internet + mobile + log(GDPperc) + log(pop) + 
-    popd + rteacher + eyear + expend, data = data)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--72.220  -8.297   1.841  18.542  46.734 
-
-Coefficients:
-               Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)  198.843065 123.844972   1.606 0.120925    
-internet       1.959607   0.519093   3.775 0.000881 ***
-mobile         0.383294   0.274898   1.394 0.175492    
-log(GDPperc)  -2.676702   9.207544  -0.291 0.773673    
-log(pop)      10.655010   4.537883   2.348 0.027090 *  
-popd           0.001603   0.003215   0.499 0.622419    
-rteacher      -0.349618   1.873351  -0.187 0.853459    
-eyear         -5.995144   3.856552  -1.555 0.132626    
-expend         2.735772   5.527635   0.495 0.624974    
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 30.82 on 25 degrees of freedom
-  (29 observations deleted due to missingness)
-Multiple R-squared:  0.6726,    Adjusted R-squared:  0.5678 
-F-statistic: 6.419 on 8 and 25 DF,  p-value: 0.0001491</code></pre>
-<pre><code>
-Call:
-lm(formula = ps ~ log(GDPperc) + log(pop) + popd + rteacher + 
-    eyear + expend, data = data)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--43.338  -5.947   4.057   8.202  44.884 
-
-Coefficients:
-               Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)  214.289111 101.400223   2.113  0.05064 .  
-log(GDPperc)  29.944236   7.403851   4.044  0.00094 ***
-log(pop)      10.371807   4.617193   2.246  0.03915 *  
-popd           0.002725   0.001792   1.520  0.14800    
-rteacher      -3.424028   1.530232  -2.238  0.03983 *  
-eyear        -16.168661   4.191807  -3.857  0.00139 ** 
-expend         4.506369   5.685975   0.793  0.43964    
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 24.44 on 16 degrees of freedom
-  (40 observations deleted due to missingness)
-Multiple R-squared:   0.76, Adjusted R-squared:   0.67 
-F-statistic: 8.445 on 6 and 16 DF,  p-value: 0.0003067</code></pre>
-<pre><code>
-Call:
-lm(formula = ps ~ internet + mobile + log(GDPperc) + log(pop) + 
-    popd + rteacher + eyear + expend, data = data)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--37.389  -5.489  -0.126  12.811  30.420 
-
-Coefficients:
-               Estimate Std. Error t value Pr(&gt;|t|)  
-(Intercept)  201.179611 104.075976   1.933   0.0737 .
-internet       1.561277   0.624799   2.499   0.0255 *
-mobile         0.125213   0.222887   0.562   0.5832  
-log(GDPperc)  16.217979   8.606442   1.884   0.0804 .
-log(pop)       8.666553   4.288148   2.021   0.0628 .
-popd           0.002592   0.002470   1.049   0.3118  
-rteacher      -1.065455   1.667119  -0.639   0.5331  
-eyear        -11.385740   4.210679  -2.704   0.0171 *
-expend        -2.767786   5.850844  -0.473   0.6435  
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 21.7 on 14 degrees of freedom
-  (40 observations deleted due to missingness)
-Multiple R-squared:  0.8344,    Adjusted R-squared:  0.7397 
-F-statistic: 8.817 on 8 and 14 DF,  p-value: 0.0002568</code></pre>
-</div>
+<table style="text-align:center">
+<caption>
+<strong>Table:Regression Estimates of Math Score</strong>
+</caption>
+<tr>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="3">
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="3">
+Math Score
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(1)
+</td>
+<td>
+(2)
+</td>
+<td>
+(3)
+</td>
+</tr>
+<tr>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+log(GDPperc)
+</td>
+<td>
+29.666<sup>***</sup>
+</td>
+<td>
+22.703<sup>**</sup>
+</td>
+<td>
+-7.883
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(5.794)
+</td>
+<td>
+(9.524)
+</td>
+<td>
+(10.680)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+log(pop)
+</td>
+<td>
+1.642
+</td>
+<td>
+7.587
+</td>
+<td>
+11.018<sup>**</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(3.249)
+</td>
+<td>
+(6.643)
+</td>
+<td>
+(5.264)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+popd
+</td>
+<td>
+0.004<sup>*</sup>
+</td>
+<td>
+0.005
+</td>
+<td>
+0.003
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.002)
+</td>
+<td>
+(0.003)
+</td>
+<td>
+(0.004)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+rteacher
+</td>
+<td>
+</td>
+<td>
+-4.035
+</td>
+<td>
+-0.956
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(2.616)
+</td>
+<td>
+(2.173)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+eyear
+</td>
+<td>
+</td>
+<td>
+-8.544
+</td>
+<td>
+-7.042
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(5.699)
+</td>
+<td>
+(4.473)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+expend
+</td>
+<td>
+</td>
+<td>
+11.785
+</td>
+<td>
+-2.215
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(7.097)
+</td>
+<td>
+(6.412)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+internet
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+2.522<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(0.602)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+mobile
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+0.452
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(0.319)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+(intercept)
+</td>
+<td>
+145.762
+</td>
+<td>
+216.904
+</td>
+<td>
+240.336
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(87.914)
+</td>
+<td>
+(156.559)
+</td>
+<td>
+(143.650)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+63
+</td>
+<td>
+34
+</td>
+<td>
+34
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+R<sup>2</sup>
+</td>
+<td>
+0.388
+</td>
+<td>
+0.451
+</td>
+<td>
+0.690
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Adjusted R<sup>2</sup>
+</td>
+<td>
+0.357
+</td>
+<td>
+0.328
+</td>
+<td>
+0.591
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Residual Std. Error
+</td>
+<td>
+41.891 (df = 59)
+</td>
+<td>
+45.818 (df = 27)
+</td>
+<td>
+35.750 (df = 25)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+F Statistic
+</td>
+<td>
+12.455<sup>***</sup> (df = 3; 59)
+</td>
+<td>
+3.689<sup>***</sup> (df = 6; 27)
+</td>
+<td>
+6.963<sup>***</sup> (df = 8; 25)
+</td>
+</tr>
+<tr>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td colspan="3" style="text-align:right">
+<sup><em></sup>p&lt;0.1; <sup><strong></sup>p&lt;0.05; <sup></strong></em></sup>p&lt;0.01
+</td>
+</tr>
+</table>
+<table style="text-align:center">
+<caption>
+<strong>Table:Regression Estimates of Reading Score</strong>
+</caption>
+<tr>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="3">
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="3">
+Reading Score
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(1)
+</td>
+<td>
+(2)
+</td>
+<td>
+(3)
+</td>
+</tr>
+<tr>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+log(GDPperc)
+</td>
+<td>
+27.480<sup>***</sup>
+</td>
+<td>
+20.996<sup>**</sup>
+</td>
+<td>
+-2.677
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(5.174)
+</td>
+<td>
+(7.897)
+</td>
+<td>
+(9.208)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+log(pop)
+</td>
+<td>
+3.107
+</td>
+<td>
+7.920
+</td>
+<td>
+10.655<sup>**</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(2.901)
+</td>
+<td>
+(5.508)
+</td>
+<td>
+(4.538)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+popd
+</td>
+<td>
+0.002
+</td>
+<td>
+0.003
+</td>
+<td>
+0.002
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.002)
+</td>
+<td>
+(0.002)
+</td>
+<td>
+(0.003)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+rteacher
+</td>
+<td>
+</td>
+<td>
+-2.788
+</td>
+<td>
+-0.350
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(2.169)
+</td>
+<td>
+(1.873)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+eyear
+</td>
+<td>
+</td>
+<td>
+-7.206
+</td>
+<td>
+-5.995
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(4.725)
+</td>
+<td>
+(3.857)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+expend
+</td>
+<td>
+</td>
+<td>
+13.659<sup>**</sup>
+</td>
+<td>
+2.736
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(5.884)
+</td>
+<td>
+(5.528)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+internet
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+1.960<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(0.519)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+mobile
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+0.383
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(0.275)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+(intercept)
+</td>
+<td>
+146.816<sup>*</sup>
+</td>
+<td>
+187.641
+</td>
+<td>
+198.843
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(78.509)
+</td>
+<td>
+(129.802)
+</td>
+<td>
+(123.845)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+63
+</td>
+<td>
+34
+</td>
+<td>
+34
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+R<sup>2</sup>
+</td>
+<td>
+0.365
+</td>
+<td>
+0.463
+</td>
+<td>
+0.673
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Adjusted R<sup>2</sup>
+</td>
+<td>
+0.332
+</td>
+<td>
+0.343
+</td>
+<td>
+0.568
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Residual Std. Error
+</td>
+<td>
+37.409 (df = 59)
+</td>
+<td>
+37.987 (df = 27)
+</td>
+<td>
+30.822 (df = 25)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+F Statistic
+</td>
+<td>
+11.284<sup>***</sup> (df = 3; 59)
+</td>
+<td>
+3.877<sup>***</sup> (df = 6; 27)
+</td>
+<td>
+6.419<sup>***</sup> (df = 8; 25)
+</td>
+</tr>
+<tr>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td colspan="3" style="text-align:right">
+<sup><em></sup>p&lt;0.1; <sup><strong></sup>p&lt;0.05; <sup></strong></em></sup>p&lt;0.01
+</td>
+</tr>
+</table>
+<table style="text-align:center">
+<caption>
+<strong>Table:Regression Estimates of Problem Solving Score</strong>
+</caption>
+<tr>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="3">
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="3">
+Reading Score
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(1)
+</td>
+<td>
+(2)
+</td>
+<td>
+(3)
+</td>
+</tr>
+<tr>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+log(GDPperc)
+</td>
+<td>
+30.639<sup>***</sup>
+</td>
+<td>
+29.944<sup>***</sup>
+</td>
+<td>
+16.218<sup>*</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(7.175)
+</td>
+<td>
+(7.404)
+</td>
+<td>
+(8.606)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+log(pop)
+</td>
+<td>
+5.746
+</td>
+<td>
+10.372<sup>**</sup>
+</td>
+<td>
+8.667<sup>*</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(3.764)
+</td>
+<td>
+(4.617)
+</td>
+<td>
+(4.288)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+popd
+</td>
+<td>
+0.004<sup>*</sup>
+</td>
+<td>
+0.003
+</td>
+<td>
+0.003
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.002)
+</td>
+<td>
+(0.002)
+</td>
+<td>
+(0.002)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+rteacher
+</td>
+<td>
+</td>
+<td>
+-3.424<sup>**</sup>
+</td>
+<td>
+-1.065
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(1.530)
+</td>
+<td>
+(1.667)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+eyear
+</td>
+<td>
+</td>
+<td>
+-16.169<sup>***</sup>
+</td>
+<td>
+-11.386<sup>**</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(4.192)
+</td>
+<td>
+(4.211)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+expend
+</td>
+<td>
+</td>
+<td>
+4.506
+</td>
+<td>
+-2.768
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(5.686)
+</td>
+<td>
+(5.851)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+internet
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+1.561<sup>**</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(0.625)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+mobile
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+0.125
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(0.223)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+(intercept)
+</td>
+<td>
+77.963
+</td>
+<td>
+214.289<sup>*</sup>
+</td>
+<td>
+201.180<sup>*</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(88.520)
+</td>
+<td>
+(101.400)
+</td>
+<td>
+(104.076)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+42
+</td>
+<td>
+23
+</td>
+<td>
+23
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+R<sup>2</sup>
+</td>
+<td>
+0.453
+</td>
+<td>
+0.760
+</td>
+<td>
+0.834
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Adjusted R<sup>2</sup>
+</td>
+<td>
+0.410
+</td>
+<td>
+0.670
+</td>
+<td>
+0.740
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Residual Std. Error
+</td>
+<td>
+33.948 (df = 38)
+</td>
+<td>
+24.438 (df = 16)
+</td>
+<td>
+21.703 (df = 14)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+F Statistic
+</td>
+<td>
+10.481<sup>***</sup> (df = 3; 38)
+</td>
+<td>
+8.445<sup>***</sup> (df = 6; 16)
+</td>
+<td>
+8.817<sup>***</sup> (df = 8; 14)
+</td>
+</tr>
+<tr>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td colspan="3" style="text-align:right">
+<sup><em></sup>p&lt;0.1; <sup><strong></sup>p&lt;0.05; <sup></strong></em></sup>p&lt;0.01
+</td>
+</tr>
+</table>
+<table style="text-align:center">
+<caption>
+<strong>Table:Regression Estimates of Three Modeles</strong>
+</caption>
+<tr>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="3">
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+math
+</td>
+<td>
+reading
+</td>
+<td>
+ps
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(1)
+</td>
+<td>
+(2)
+</td>
+<td>
+(3)
+</td>
+</tr>
+<tr>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+log(GDPperc)
+</td>
+<td>
+-7.883
+</td>
+<td>
+-2.677
+</td>
+<td>
+16.218<sup>*</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(10.680)
+</td>
+<td>
+(9.208)
+</td>
+<td>
+(8.606)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+log(pop)
+</td>
+<td>
+11.018<sup>**</sup>
+</td>
+<td>
+10.655<sup>**</sup>
+</td>
+<td>
+8.667<sup>*</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(5.264)
+</td>
+<td>
+(4.538)
+</td>
+<td>
+(4.288)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+popd
+</td>
+<td>
+0.003
+</td>
+<td>
+0.002
+</td>
+<td>
+0.003
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.004)
+</td>
+<td>
+(0.003)
+</td>
+<td>
+(0.002)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+rteacher
+</td>
+<td>
+-0.956
+</td>
+<td>
+-0.350
+</td>
+<td>
+-1.065
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(2.173)
+</td>
+<td>
+(1.873)
+</td>
+<td>
+(1.667)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+eyear
+</td>
+<td>
+-7.042
+</td>
+<td>
+-5.995
+</td>
+<td>
+-11.386<sup>**</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(4.473)
+</td>
+<td>
+(3.857)
+</td>
+<td>
+(4.211)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+expend
+</td>
+<td>
+-2.215
+</td>
+<td>
+2.736
+</td>
+<td>
+-2.768
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(6.412)
+</td>
+<td>
+(5.528)
+</td>
+<td>
+(5.851)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+internet
+</td>
+<td>
+2.522<sup>***</sup>
+</td>
+<td>
+1.960<sup>***</sup>
+</td>
+<td>
+1.561<sup>**</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.602)
+</td>
+<td>
+(0.519)
+</td>
+<td>
+(0.625)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+mobile
+</td>
+<td>
+0.452
+</td>
+<td>
+0.383
+</td>
+<td>
+0.125
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.319)
+</td>
+<td>
+(0.275)
+</td>
+<td>
+(0.223)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+(intercept)
+</td>
+<td>
+240.336
+</td>
+<td>
+198.843
+</td>
+<td>
+201.180<sup>*</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(143.650)
+</td>
+<td>
+(123.845)
+</td>
+<td>
+(104.076)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+34
+</td>
+<td>
+34
+</td>
+<td>
+23
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+R<sup>2</sup>
+</td>
+<td>
+0.690
+</td>
+<td>
+0.673
+</td>
+<td>
+0.834
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Adjusted R<sup>2</sup>
+</td>
+<td>
+0.591
+</td>
+<td>
+0.568
+</td>
+<td>
+0.740
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Residual Std. Error
+</td>
+<td>
+35.750 (df = 25)
+</td>
+<td>
+30.822 (df = 25)
+</td>
+<td>
+21.703 (df = 14)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+F Statistic
+</td>
+<td>
+6.963<sup>***</sup> (df = 8; 25)
+</td>
+<td>
+6.419<sup>***</sup> (df = 8; 25)
+</td>
+<td>
+8.817<sup>***</sup> (df = 8; 14)
+</td>
+</tr>
+<tr>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td colspan="3" style="text-align:right">
+<sup><em></sup>p&lt;0.1; <sup><strong></sup>p&lt;0.05; <sup></strong></em></sup>p&lt;0.01
+</td>
+</tr>
+</table>
 </div>
 <div id="analysis" class="section level2">
 <h2>Analysis</h2>
