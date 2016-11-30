@@ -1,5 +1,5 @@
 ---
-title: "index.Rmd"
+title: "Final_project.Rmd"
 output:
   html_document: default
   pdf_document: default
@@ -7,20 +7,19 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-library(stargazer)  # for summary statistics and regression tables
-library(magrittr)  # for 'piping': more readable code
-library(ggplot2)  # the ggplot2 package provides nice function for plotting
-library(interplot)  # for plotting interactions
-library(dplyr)  # for data manipulation
+library(stargazer)
+library(magrittr)  
+library(ggplot2)
+library(interplot)  
+library(dplyr)  
 library(devtools)
 library(xlsx)
 library(knitr)
-
 ```
 
 #Introduction
-The main aim of this research is to analyse whether certain variables have a substantial effect on student's ability or not. The variables that apply to this research are the follows: GDP per capita, Government expenditure, Population, Population density, Primary school pupil-teacher ratio, Mandatory schoolarisation years, Internet users and Mobile subscriptions.
-Likewise, the student's ability will be analysed through three different values: math score, reading score and problem solving.
+The main goal of our reserch is finding variables which affect the student's ability generally through comparison of test scores from differend countries. Especially, we will focus on how inerenet accessibility bring effects on student's ability. 
+Recently, some reserchers found that internet accessibility might bring reverse afffect on student's ability because they spend more time on net surfing and gathering information through internet without thinking.
 
 #Methodology
 To analyze our research theme, we used the Data from Programme for International Student Assessment(PISA) that conducts assesment about the ......
@@ -33,11 +32,11 @@ Then, we have analyzed the correlation between these variables.
 #Data gathering and merging process
 The first dataset is from **PISA**, and the second from **the World Bank**. Both datasets are open and can be found in their respective webpages.
 
-###Data Source
+##Data Source
 1. PISA: 
 We downloaded .... and picked the following three datas up to use as dependent variables:
 
-|Variable|Variable Name|Description|
+|Dependent Variable|Variable Name|Description|
 |:--------|:------------------|:-----------------------------|
 |DV|math|Mathmatics mean score(2012)|
 |DV|reading|Readind mean score(2012)|
@@ -46,7 +45,7 @@ We downloaded .... and picked the following three datas up to use as dependent v
 2. The World Bank:
 Taking aveirability into account, we picked the following variables up as explanetory variables from the World Bank Data.
 
-|Variable|Variable Name|Description|
+|Indivendent Variable|Variable Name|Description|
 |:--------|:---------------|:--------------------------------|
 |IV|GDPperc|GDP per Capita (current US$)|
 |IV|expend|Government expenditure on education, total (% of GDP)|
@@ -57,92 +56,84 @@ Taking aveirability into account, we picked the following variables up as explan
 |IV|internet|internet users (per 100 people). Internet users are individuals who have used the Internet (from any location) in the last 12 months. Internet can be used via a computer, mobile phone, personal digital assistant, games machine, digital TV etc.|
 |IV|mobile|Mobile cellular subscriptions (per 100 people)|
 
+##Cleaned and Merged 
 We have cleaned and merged the relevant data of both datasets. Then, we have generate tables and figures to relate the data with the aim of addressing, as well as possible, our researching question to begin to determine whether our hypothesis is correct or not.
 
-
-```{r,echo=FALSE}
-
-```
-
-## Multiple Regression
-
 ```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
-#Regression
+#For Regression
 ##Data install
 data <- read.xlsx("PISA_Data.xlsx",1)
 
+##Data Cleaning
+cdata <- subset(data, select = c(1,3,4,5,6,7,9,10,12,14,16,17))
+cdata <- cdata[,c(1,3,2,4,7,8,9,10,11,12,5,6)]
+
+#For Growth comparison
+##Data install
+pisa <- read.xlsx("PISA_Data.xlsx",2)
+pisa <- pisa[1:41,]
+```
+
+#Multiple Regression
+```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
+
+##Statistical Discriptions
+stargazer(cdata, type="text",header = FALSE,
+          title= 'Summary statistics of the variables')
+          
 ##Conducting Regression
-##Math
+###Math
 ma.lm <- lm(math ~ log(GDPperc) + log(pop) +  popd, data=data)
 ma.lm2 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = data)
-ma.lm3 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile, data = data)
+ma.lm3 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear+ internet + mobile, data = data)
+ma.lm4 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile, data = data)
 
 ###Create labels
-labels <- c('log(GDPperc)', 'log(pop)','popd', 'rteacher', 'eyear', 'expend', 'internet','mobile','(intercept)')
+mlabels <- c('log(GDPperc)', 'log(pop)','popd', 'rteacher', 'eyear', 'expend', 'internet','mobile','(intercept)')
 
 ###Create table
-<<<<<<< Updated upstream
-stargazer(ma.lm,ma.lm2,ma.lm3, type='html',
+stargazer(ma.lm,ma.lm2,ma.lm3,ma.lm4,
+          type='latex',header = F, 
           covariate.labels = mlabels,
           dep.var.labels = 'Math Score',
-=======
-stargazer(ma.lm,ma.lm2,ma.lm3, type='text',
-          covariate.labels = labels,
-          dep.var.labels = ('Math Score'),
-          out='math_regression.txt',
           title="Table:Regression Estimates of Math Score",
-          no.space=TRUE)
+          no.space = TRUE,)
 
-stargazer(ma.lm,ma.lm2,ma.lm3,
-          covariate.labels = labels,
-          dep.var.labels = ('Math Score'),
-          title="Table:Regression Estimates of Math Score",
-          type="latex", header = FALSE,
-          no.space=TRUE)
-
-stargazer(ma.lm,ma.lm2,ma.lm3, type='html',
-          covariate.labels = labels,
-          dep.var.labels = ('Math Score'),
-          out='math_regression.html',
->>>>>>> Stashed changes
-          title="Table:Regression Estimates of Math Score")
 ```
 
 
 
-```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE}
+```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
 ###Reading
-re.lm <- lm(reading ~ log(GDPperc) + log(pop) +  popd,data = data)
-re.lm2 <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = data)
-re.lm3 <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile,data = data)
-summary(re.lm3)
+re.lm <- lm(reading ~ log(GDPperc) + log(pop) +  popd,data = cdata)
+re.lm2 <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = cdata )
+re.lm3 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear+ internet + mobile, data = cdata)
+re.lm4 <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile,data = cdata )
 
-stargazer(re.lm, re.lm2, re.lm3, type='text',
-          covariate.labels = labels,
-          dep.var.labels = ('Reading Score'),
-          out='re_regression.txt',
-          title="Table:Regression Estimates of Reading Score",
-          no.space=TRUE)
-
+stargazer(re.lm,re.lm2,re.lm3, type='latex',
+          header = FALSE, no.space = TRUE,
+          covariate.labels = mlabels,
+          dep.var.labels = 'Reading Score',
+          title="Table:Regression Estimates of Reading Score")
 
 ###Problem Solving
-ps.lm <- lm(ps ~ log(GDPperc) + log(pop) +  popd, data = data)
-ps.lm2 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = data)
-ps.lm3 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile, data = data)
-summary(ps.lm3)
+ps.lm <- lm(ps ~ log(GDPperc) + log(pop) +  popd, data = cdata)
+ps.lm2 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = cdata)
+ps.lm3 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear+ internet + mobile, data = cdata)
+ps.lm4 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile, data = cdata)
+stargazer(ps.lm,ps.lm2,ps.lm3,ps.lm4, type ='latex',
+          header = FALSE, no.space = TRUE,
+          covariate.labels = mlabels,
+          dep.var.labels = 'Reading Score',
+          title="Table:Regression Estimates of Problem Solving Score")
 
-stargazer(ps.lm, ps.lm2, ps.lm3, type='text',
-          covariate.labels = labels,
-          dep.var.labels = ('Problem Solving Score'),
-          out='ps_regression.txt',
-          title="Table:Regression Estimates of Probleb Sloving Score",
-          no.space=TRUE)
+##Comparison
+stargazer(ma.lm4,re.lm4,ps.lm4, type='latex',
+          header = FALSE, no.space =TRUE,
+          covariate.labels = mlabels,
+          out="comparison.text",
+          title="Table:Regression Estimates of Three Modeles")
 
-stargazer(ma.lm3, re.lm3, ps.lm3, type='text',
-          covariate.labels = labels,
-          out='cm_regression.txt',
-          title="Table:Regression Estimates Comparison",
-          no.space=TRUE)
 ```
 
 ##Analysis
@@ -161,18 +152,46 @@ Also, we noticed that about the academic ability (math and reading,) internet ac
 
 Actually, there is some discussion that internet accessibility might bring reverse effect on student's thinkig ability. Therefore, next we focus on the problem solving score.
 
-###Correlation between score growth
-```{r,echo=FALSE}
-#Growth comparison
-##Data install
-pisa <- read.xlsx("/Users/komaiyumi/Desktop/Social Sicence/web/PISA_Data.xlsx",2)
+#Correlation between Problem Solving and Internet
+We will do Diagnose about the regresion of Problem solving. The result shows,,,,
+```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
+plot(ps.lm4)
+confint(ps.lm4)
 
-##Plot and Correlation
-p <- ggplot(pisa, aes(Internet.users.growth, Score.growth))+geom_point()
-plot(p)
+### adding the label based on GDP per capita
+summary(data$GDPperc)
+glabel <- cut(cdata$GDPperc, breaks=c(1754,10690,20580,31350,45720,149200),
+    labels=c("low","middle-low","middle","middle-high","high"),
+    right=FALSE,include_lowest=TRUE)
+lcdata <- transform(cdata,GDPperc_label=glabel)
 
-growth.lm <- lm(Internet.users.growth ~ Score.growth, data=pisa)
-summary(growth.lm)
+###correlation between internet and ps score
+pplot <- ggplot(lcdata,aes(x=ps,y=internet))+
+  geom_point(aes(colour=GDPperc_label))+
+    stat_smooth(method="lm")
 
 ```
-The result shows that we cannot find any correlation between internet accessibility growth and score growth.....
+
+
+#Analysis about score growth
+```{r,echo=FALSE}
+##Labeling
+summary(pisa$GDPperc)
+g2label <- cut(pisa$GDPperc, breaks=c(1754,10690,20580,31350,45720,149200),
+    labels=c("low","middle-low","middle","middle-high","high"),
+    right=FALSE,include_lowest=TRUE)
+lpisa <- transform(pisa,GDPperc_label=g2label)
+
+##Plot and Correlation
+###score growth and the number of internet users
+p <- ggplot(lpisa, aes(INTERNET.USERS.2012..per.100.people.,Score.growth))+
+  geom_point(aes(colour = GDPperc_label))+
+  stat_smooth(method="lm")+
+  theme_bw()
+  
+###Growth of the score and the number of internet users growth
+p2 <- ggplot(lpisa, aes(Internet.users.growth, Score.growth))+
+  geom_point(aes(colour = GDPperc_label))
+
+```
+
