@@ -78,12 +78,33 @@ ma.lm2 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend,
 ma.lm3 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile, data = data)
 
 ###Create labels
-mlabels <- c('log(GDPperc)', 'log(pop)','popd', 'rteacher', 'eyear', 'expend', 'internet','mobile','(intercept)')
+labels <- c('log(GDPperc)', 'log(pop)','popd', 'rteacher', 'eyear', 'expend', 'internet','mobile','(intercept)')
 
 ###Create table
+<<<<<<< Updated upstream
 stargazer(ma.lm,ma.lm2,ma.lm3, type='html',
           covariate.labels = mlabels,
           dep.var.labels = 'Math Score',
+=======
+stargazer(ma.lm,ma.lm2,ma.lm3, type='text',
+          covariate.labels = labels,
+          dep.var.labels = ('Math Score'),
+          out='math_regression.txt',
+          title="Table:Regression Estimates of Math Score",
+          no.space=TRUE)
+
+stargazer(ma.lm,ma.lm2,ma.lm3,
+          covariate.labels = labels,
+          dep.var.labels = ('Math Score'),
+          title="Table:Regression Estimates of Math Score",
+          type="latex", header = FALSE,
+          no.space=TRUE)
+
+stargazer(ma.lm,ma.lm2,ma.lm3, type='html',
+          covariate.labels = labels,
+          dep.var.labels = ('Math Score'),
+          out='math_regression.html',
+>>>>>>> Stashed changes
           title="Table:Regression Estimates of Math Score")
 ```
 
@@ -92,18 +113,36 @@ stargazer(ma.lm,ma.lm2,ma.lm3, type='html',
 ```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE}
 ###Reading
 re.lm <- lm(reading ~ log(GDPperc) + log(pop) +  popd,data = data)
-re.lm2 <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = data )
-summary(re.lm2)
-re.lm3 <- lm(reading ~ internet + mobile + log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend,data = data )
-summary (re.lm3)
+re.lm2 <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = data)
+re.lm3 <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile,data = data)
+summary(re.lm3)
+
+stargazer(re.lm, re.lm2, re.lm3, type='text',
+          covariate.labels = labels,
+          dep.var.labels = ('Reading Score'),
+          out='re_regression.txt',
+          title="Table:Regression Estimates of Reading Score",
+          no.space=TRUE)
+
 
 ###Problem Solving
 ps.lm <- lm(ps ~ log(GDPperc) + log(pop) +  popd, data = data)
 ps.lm2 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = data)
-summary(ps.lm2)
-ps.lm3 <- lm(ps ~ internet + mobile + log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = data)
-summary (ps.lm3)
+ps.lm3 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile, data = data)
+summary(ps.lm3)
 
+stargazer(ps.lm, ps.lm2, ps.lm3, type='text',
+          covariate.labels = labels,
+          dep.var.labels = ('Problem Solving Score'),
+          out='ps_regression.txt',
+          title="Table:Regression Estimates of Probleb Sloving Score",
+          no.space=TRUE)
+
+stargazer(ma.lm3, re.lm3, ps.lm3, type='text',
+          covariate.labels = labels,
+          out='cm_regression.txt',
+          title="Table:Regression Estimates Comparison",
+          no.space=TRUE)
 ```
 
 ##Analysis
