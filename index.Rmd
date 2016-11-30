@@ -1,8 +1,8 @@
 ---
 title: "index.Rmd"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -65,10 +65,11 @@ We have cleaned and merged the relevant data of both datasets. Then, we have gen
 ```
 
 ## Multiple Regression
-```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE}
+
+```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
 #Regression
 ##Data install
-data <- read.xlsx("/Users/komaiyumi/Desktop/Social Sicence/web/PISA_Data.xlsx",1)
+data <- read.xlsx("PISA_Data.xlsx",1)
 
 ##Conducting Regression
 ##Math
@@ -80,26 +81,12 @@ ma.lm3 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend 
 mlabels <- c('log(GDPperc)', 'log(pop)','popd', 'rteacher', 'eyear', 'expend', 'internet','mobile','(intercept)')
 
 ###Create table
-stargazer(ma.lm,ma.lm2,ma.lm3, type='text',
-          covariate.labels = mlabels,
-          dep.var.labels = ('Math Score'),
-          out='math_regression.txt',
-          title="Table:Regression Estimates of Math Score",
-          no.space=TRUE)
-
-stargazer(ma.lm,ma.lm2,ma.lm3, type='latex', header = FALSE,
-          covariate.labels = mlabels,
-          dep.var.labels = ('Math Score'),
-          title="Table:Regression Estimates of Math Score",
-          no.space=TRUE)
-
 stargazer(ma.lm,ma.lm2,ma.lm3, type='html',
           covariate.labels = mlabels,
-          dep.var.labels = ('Math Score'),
-          out='math_regression.html',
+          dep.var.labels = 'Math Score',
           title="Table:Regression Estimates of Math Score")
 ```
-###Why can't I get a table on PDF??
+
 
 
 ```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE}
