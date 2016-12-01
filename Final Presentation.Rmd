@@ -9,6 +9,7 @@ output:
     fig_width: 8
     slide_level: 2
     theme: CambridgeUS
+header-includes: \usepackage{graphicx} \usepackage{booktabs}
 ---
 
 ```{r setup, include=FALSE}
