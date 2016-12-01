@@ -88,8 +88,8 @@ mlabels <- c('log(GDPperc)', 'log(pop)','popd', 'rteacher', 'eyear', 'expend', '
 ###Math
 ma.lm <- lm(math ~ log(GDPperc) + log(pop) +  popd, data=data)
 ma.lm2 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = data)
-ma.lm3 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear+ internet + mobile, data = data)
-ma.lm4 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile, data = data)
+ma.lm3 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile, data = data)
+
 
 ###Reading
 re.lm <- lm(reading ~ log(GDPperc) + log(pop) +  popd,data = cdata)
@@ -108,6 +108,11 @@ stargazer(ma.lm,ma.lm2,ma.lm3,re.lm,re.lm2,re.lm3,ps.lm,ps.lm2,ps.lm3,
           covariate.labels = mlabels,
           title="Table:Detarminants of Student's Ability",
           font.size='tiny')
+
+```
+##Analysis
+```{r}
+![alt html]()
 ```
 
 ##Analysis of Problem Solving
@@ -120,9 +125,13 @@ glabel <- cut(cdata$GDPperc, breaks=c(1754,10690,20580,31350,45720,149200),
 lcdata <- transform(cdata,GDPperc_label=glabel)
 
 ###correlation between internet and ps score
-pplot <- ggplot(lcdata,aes(x=ps,y=internet))+
-  geom_point(aes(colour=GDPperc_label))+
-    stat_smooth(method="lm")
+pplot <- ggplot(lcdata,aes(x=internet,y=ps))+
+  geom_point(aes(colour=GDPperc_label),size=2)+
+  labs(x = "Internet Users(per 100 people)", y = "Problem Solving")+
+  ggtitle("Internet Users and Problem Solving")+
+  stat_smooth(method="lm")+
+  coord_cartesian(xlim = c(45, 95), ylim = c(390, 580))+
+  theme_bw()
 plot(pplot)
 
 ```
@@ -138,7 +147,9 @@ lpisa <- transform(pisa,GDPperc_label=g2label)
 ##Plot and Correlation
 ###score growth and the number of internet users
 p <- ggplot(lpisa, aes(INTERNET.USERS.2012..per.100.people.,Score.growth))+
-  geom_point(aes(colour = GDPperc_label))+
+  geom_point(aes(colour = GDPperc_label),size=2)+
+  labs(x = "Internet Users(per 100 people)", y = "PS Score Growth")+
+  ggtitle("Internet Users and PS Score Growth")+
   stat_smooth(method="lm")+
   theme_bw()
 plot(p)
@@ -148,18 +159,20 @@ plot(p)
 ```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE} 
 ###Growth of the score and the number of internet users growth
 p2 <- ggplot(lpisa, aes(Internet.users.growth, Score.growth))+
-  geom_point(aes(colour = GDPperc_label))
+  geom_point(aes(colour = GDPperc_label),size=2)+
+  labs(x = "Internet Users Growth", y = "PS Score Growth")+
+  ggtitle("Internet Users Growth and PS Score Growth")+
+  theme_bw()
 plot(p2)
 ```
 
 ##Finding and Limitation
 ###Finding
-- Internet accessiblity would have a strong impact on student's ability.
-- However, the impact may weaker on thinking ability than academic ability.
-- If the internet accessibility improve, thinking ability might decrease.
+- Internet accessiblity could have a strong impact on student's ability.
+- However, the impact could be weaker on problem solving ability than academic ability.
 
 ###Limitation
 - small sample size
-- just a comparison between 2003 and 2012
+- Data limitation
 
 
