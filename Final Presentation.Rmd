@@ -1,5 +1,5 @@
 ---
-title: "Does the Interner Accessibility Improve Student's Ability?"
+title: "Does the Internet Accessibility Improve Student's Ability?"
 author: "Pol De Santaló & Yumi Komai"
 date: "December 2, 2016"
 output:
