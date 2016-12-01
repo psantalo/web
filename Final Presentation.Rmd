@@ -47,8 +47,8 @@ pisa <- pisa[1:41,]
 5. Analysis
 6. Result
 
-##Introduction
 
+<<<<<<< HEAD
 The aim of our research is to analyse if there is a significant impact on students ability made by the following factors: GDP per capita, Government expenditure, Population, Population density, Primary school pupil-teacher ratio, Mandatory schoolarisation years, Internet users and Mobile subscriptions.
 
 ##Hypothesis
@@ -58,6 +58,9 @@ The hypothesis of our research is that Internet accessibility has a more substan
 The data sources used to analyse if our hypothesis is correct have been obtained from the World Bank and the OECD.
 
 ##Methodology (Dependent Variables)
+=======
+##Methodology(Dependent Variables)
+>>>>>>> origin/gh-pages
 
 |Dependent Variable|Variable Name|Description|
 |:--------|:------------------|:------------------------|
@@ -65,7 +68,7 @@ The data sources used to analyse if our hypothesis is correct have been obtained
 |DV|reading|Readind mean score(2012)|
 |DV|ps|Prolem Solving mean score(2012)|
 
-##Methodology (Independent Variables)
+##Methodology(Independent Variables)
 |Indivendent Variable|Variable Name|Description|
 |:--------|:---------------|:---------------------------|
 |IV|GDPperc|GDP per Capita (current US$)|
@@ -77,7 +80,7 @@ The data sources used to analyse if our hypothesis is correct have been obtained
 |IV|internet|internet users (per 100 people). |
 |IV|mobile|Mobile cellular subscriptions (per 100 people)|
 
-##Methodology (Descriptive Statistics)
+##Methodology(Descriptive Statistics)
 ```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
 
 stargazer(cdata, type="latex",header = FALSE,
@@ -92,8 +95,8 @@ mlabels <- c('log(GDPperc)', 'log(pop)','popd', 'rteacher', 'eyear', 'expend', '
 ###Math
 ma.lm <- lm(math ~ log(GDPperc) + log(pop) +  popd, data=data)
 ma.lm2 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = data)
-ma.lm3 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear+ internet + mobile, data = data)
-ma.lm4 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile, data = data)
+ma.lm3 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile, data = data)
+
 
 ###Reading
 re.lm <- lm(reading ~ log(GDPperc) + log(pop) +  popd,data = cdata)
@@ -124,9 +127,13 @@ glabel <- cut(cdata$GDPperc, breaks=c(1754,10690,20580,31350,45720,149200),
 lcdata <- transform(cdata,GDPperc_label=glabel)
 
 ###correlation between internet and ps score
-pplot <- ggplot(lcdata,aes(x=ps,y=internet))+
-  geom_point(aes(colour=GDPperc_label))+
-    stat_smooth(method="lm")
+pplot <- ggplot(lcdata,aes(x=internet,y=ps))+
+  geom_point(aes(colour=GDPperc_label),size=2)+
+  labs(x = "Internet Users(per 100 people)", y = "Problem Solving")+
+  ggtitle("Internet Users and Problem Solving")+
+  stat_smooth(method="lm")+
+  coord_cartesian(xlim = c(45, 95), ylim = c(390, 580))+
+  theme_bw()
 plot(pplot)
 
 ```
@@ -142,7 +149,9 @@ lpisa <- transform(pisa,GDPperc_label=g2label)
 ##Plot and Correlation
 ###score growth and the number of internet users
 p <- ggplot(lpisa, aes(INTERNET.USERS.2012..per.100.people.,Score.growth))+
-  geom_point(aes(colour = GDPperc_label))+
+  geom_point(aes(colour = GDPperc_label),size=2)+
+  labs(x = "Internet Users(per 100 people)", y = "PS Score Growth")+
+  ggtitle("Internet Users and PS Score Growth")+
   stat_smooth(method="lm")+
   theme_bw()
 plot(p)
@@ -152,18 +161,20 @@ plot(p)
 ```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE} 
 ###Growth of the score and the number of internet users growth
 p2 <- ggplot(lpisa, aes(Internet.users.growth, Score.growth))+
-  geom_point(aes(colour = GDPperc_label))
+  geom_point(aes(colour = GDPperc_label),size=2)+
+  labs(x = "Internet Users Growth", y = "PS Score Growth")+
+  ggtitle("Internet Users Growth and PS Score Growth")+
+  theme_bw()
 plot(p2)
 ```
 
 ##Finding and Limitation
 ###Finding
-- Internet accessiblity would have a strong impact on student's ability.
-- However, the impact may weaker on thinking ability than academic ability.
-- If the internet accessibility improve, thinking ability might decrease.
+- Internet accessiblity could have a strong impact on student's ability.
+- However, the impact could be weaker on problem solving ability than academic ability.
 
 ###Limitation
 - small sample size
-- just a comparison between 2003 and 2012
+- Data limitation
 
 
