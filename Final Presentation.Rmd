@@ -41,18 +41,19 @@ pisa <- pisa[1:41,]
 
 ##Outline
 1. Introduction
-2. Research Question
-3. Data
+2. Research Question and Hypothesis
+3. Data Sources
 4. Methodology
 5. Analysis
 6. Result
 
 
 <<<<<<< HEAD
-The aim of our research is to analyse if there is a significant impact on students ability made by the following factors: GDP per capita, Government expenditure, Population, Population density, Primary school pupil-teacher ratio, Mandatory schoolarisation years, Internet users and Mobile subscriptions.
 
-##Hypothesis
-The hypothesis of our research is that Internet accessibility has a more substantial impact on the students ability than the others.
+
+##Research Question and Hypothesis
+The aim of our research is to analyse if there is a significant impact on students ability made by the following factors: GDP per capita, Government expenditure, Population, Population density, Primary school pupil-teacher ratio, Mandatory schoolarisation years, Internet users and Mobile subscriptions.
+The hypothesis of our research is that Internet accessibility is more likely to have a substantial impact, both positive and negative, on the students ability than the other factors.
 
 ##Data
 The data sources used to analyse if our hypothesis is correct have been obtained from the World Bank and the OECD.
