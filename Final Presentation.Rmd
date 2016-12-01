@@ -9,7 +9,6 @@ output:
     fig_width: 8
     slide_level: 2
     theme: CambridgeUS
-header-includes: \usepackage{graphicx} \usepackage{booktabs}
 ---
 
 ```{r setup, include=FALSE}
@@ -48,7 +47,6 @@ pisa <- pisa[1:41,]
 5. Analysis
 6. Result
 
-
 ##Methodology
 Dependent Variables
 
@@ -62,23 +60,18 @@ Dependent Variables
 Indivendent Variables
 
 |Variable Name|Description|
-|:--------------|:-------------------------------------|
+|:--------------|:---------------------------------|
 |GDPperc|GDP per Capita (current US$)|
 |expend|Government expenditure on education, total (% of GDP)|
 |pop|Population, total|
 |popd| Population density (people per sq. km of land area)
 |rteacher|Primary school pupil-teacher ratio|
-|eyear|Number of years that children are legally obliged to attend school|
-|internet|internet users (per 100 people). |
+|eyear|Compulsory education years in primary school|
+|internet|Internet users (per 100 people). |
 |mobile|Mobile cellular subscriptions (per 100 people)|
 
-##Methodology(Descriptive Statistics)
-```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
-
-stargazer(cdata, type="latex",header = FALSE,
-          title= 'Table: Summary statistics of the variables')
-
-```
+##Methodology
+![Descriptive Statistics](Results/Descriptive Statistics.png)
 
 ##Analysis
 ```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
@@ -91,36 +84,24 @@ ma.lm2 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend,
 ma.lm3 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + internet + mobile, data = cdata )
 ma.lm4 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile,data = cdata )
 
-
-
 ###Reading
 re.lm <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear, data = cdata )
 re.lm2 <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = cdata )
 re.lm3 <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + internet + mobile, data = cdata )
 re.lm4 <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile,data = cdata )
 
-
 ###Problem Solving
 ps.lm <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear, data = cdata )
 ps.lm2 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = cdata )
 ps.lm3 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + internet + mobile, data = cdata )
 ps.lm4 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile,data = cdata )
-
 ```
-![2result](https://github.com/psantalo/web/tree/gh-pages/Results "2result.png")
-
+![Result](Results/2result.png)
 
 ##Analysis
 Variance Inflation Factors
-```{r, echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
-##VIF
-v1 <- c('math   ',vif(ma.lm4))
-v2 <- c('reading',vif(re.lm4))
-v3 <- c('ps     ',vif(ps.lm4))
-stargazer(v1,v2,v3,
-          type='latex', header = FALSE, no.space =TRUE,
-          font.size = 'tiny')
-```
+![vif](Results/vif.png)
+
 
 ##Analysis of Problem Solving
 ```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
@@ -179,7 +160,7 @@ plot(p2)
 - However, the impact could be weaker on problem solving ability than academic ability.
 
 ###Limitation
-- small sample size
-- Data limitation
+- Small sample size
+- Available data limitation
 
 
