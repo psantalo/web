@@ -49,9 +49,13 @@ pisa <- pisa[1:41,]
 
 ##Introduction
 
-##Research Question
+The aim of our research is to analyse if there is a significant impact on students ability made by the following factors: GDP per capita, Government expenditure, Population, Population density, Primary school pupil-teacher ratio, Mandatory schoolarisation years, Internet users and Mobile subscriptions.
+
+##Hypothesis
+The hypothesis of our research is that Internet accessibility has a more substantial impact on the students ability than the others.
 
 ##Data
+The data sources used to analyse if our hypothesis is correct have been obtained from the World Bank and the OECD.
 
 ##Methodology (Dependent Variables)
 
