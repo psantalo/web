@@ -2,6 +2,7 @@
 \begin{table}[!htbp] \centering 
   \caption{Variance Inflation Factors for Problem Soving} 
   \label{} 
+\tiny 
 \begin{tabular}{@{\extracolsep{5pt}} cccccccc} 
 \\[-1.8ex]\hline 
 \hline \\[-1.8ex] 

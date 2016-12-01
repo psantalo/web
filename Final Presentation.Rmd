@@ -1,5 +1,5 @@
 ---
-title: "Does the Internet Accessibility Improve Student's Ability?"
+title: "Does the Interner Accessibility Improve Student's Ability?"
 author: "Pol De Santaló & Yumi Komai"
 date: "December 2, 2016"
 output:
@@ -23,6 +23,7 @@ library(devtools)
 library(xlsx)
 library(knitr)
 library(DAAG)
+library(jpeg)
 ```
 
 ```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
@@ -41,55 +42,21 @@ pisa <- pisa[1:41,]
 
 ##Outline
 1. Introduction
-2. Research Question and Hypothesis
-3. Data Sources
+2. Research Question
+3. Data
 4. Methodology
 5. Analysis
 6. Result
 
 
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-
-
-##Research Question and Hypothesis
-The aim of our research is to analyse if there is a significant impact on students ability made by the following factors: GDP per capita, Government expenditure, Population, Population density, Primary school pupil-teacher ratio, Mandatory schoolarisation years, Internet users and Mobile subscriptions.
-The hypothesis of our research is that Internet accessibility is more likely to have a substantial impact, both positive and negative, on the students ability than the other factors.
-
-##Data
-The data sources used to analyse if our hypothesis is correct have been obtained from the World Bank and the OECD.
-
-##Methodology (Dependent Variables)
-=======
-##Methodology(Dependent Variables)
->>>>>>> origin/gh-pages
-
-|Dependent Variable|Variable Name|Description|
-|:--------|:------------------|:------------------------|
-|DV|math|Mathmatics mean score(2012)|
-|DV|reading|Readind mean score(2012)|
-|DV|ps|Prolem Solving mean score(2012)|
-
-##Methodology(Independent Variables)
-|Indivendent Variable|Variable Name|Description|
-|:--------|:---------------|:---------------------------|
-|IV|GDPperc|GDP per Capita (current US$)|
-|IV|expend|Government expenditure on education, total (% of GDP)|
-|IV|pop|Population, total|
-|IV|popd| Population density (people per sq. km of land area)
-|IV|rteacher|Primary school pupil-teacher ratio|
-|IV|eyear|Number of years that children are legally obliged to attend school|
-|IV|internet|internet users (per 100 people). |
-|IV|mobile|Mobile cellular subscriptions (per 100 people)|
-=======
 ##Methodology
 Dependent Variables
 
 |Variable Name|Description|
 |:---------------|:------------------------------------|
-|math|Mathmatics mean score(2012)                 |
-|reading|Readind mean score(2012)                 |
-|ps|Prolem Solving mean score(2012)               |
+|math|Mathmatics mean score(2012)      |
+|reading|Readind mean score(2012)      |
+|ps|Prolem Solving mean score(2012)   |
 
 ##Methodology
 Indivendent Variables
@@ -104,7 +71,6 @@ Indivendent Variables
 |eyear|Number of years that children are legally obliged to attend school|
 |internet|internet users (per 100 people). |
 |mobile|Mobile cellular subscriptions (per 100 people)|
->>>>>>> Stashed changes
 
 ##Methodology(Descriptive Statistics)
 ```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
@@ -140,24 +106,20 @@ ps.lm2 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, d
 ps.lm3 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + internet + mobile, data = cdata )
 ps.lm4 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile,data = cdata )
 
+```
+![2result](https://github.com/psantalo/web/tree/gh-pages/Results "2result.png")
 
-##Comparison
-![alt ]
 
+##Analysis
+Variance Inflation Factors
+```{r, echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
 ##VIF
-stargazer(vif(ma.lm4),
-          type='latex', out='mavif.htlm',
-          header = FALSE, no.space =TRUE,
-          title='Variance Inflation Factors for Math')
-stargazer(vif(re.lm4),
-          type='latex', out='revif.htlm',
-          header = FALSE, no.space =TRUE,
-          title='Variance Inflation Factors for Reading')
-stargazer(vif(ps.lm4),
-          type='latex', out='psvif.htlm',
-          header = FALSE, no.space =TRUE,
-          title='Variance Inflation Factors for Problem Soving')
-
+v1 <- c('math   ',vif(ma.lm4))
+v2 <- c('reading',vif(re.lm4))
+v3 <- c('ps     ',vif(ps.lm4))
+stargazer(v1,v2,v3,
+          type='latex', header = FALSE, no.space =TRUE,
+          font.size = 'tiny')
 ```
 
 ##Analysis of Problem Solving
