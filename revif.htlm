@@ -1,0 +1,13 @@
+
+\begin{table}[!htbp] \centering 
+  \caption{Variance Inflation Factors for Reading} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}} cccccccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+log(GDPperc) & log(pop) & popd & rteacher & eyear & expend & internet & mobile \\ 
+\hline \\[-1.8ex] 
+$4.999$ & $1.729$ & $4.718$ & $1.912$ & $1.113$ & $1.363$ & $4.887$ & $4.028$ \\ 
+\hline \\[-1.8ex] 
+\end{tabular} 
+\end{table} 

@@ -90,47 +90,58 @@ stargazer(cdata, type="text",header = FALSE,
 mlabels <- c('log(GDPperc)', 'log(pop)','popd', 'rteacher', 'eyear', 'expend', 'internet','mobile','(intercept)')
 
 ###Math
-ma.lm <- lm(math ~ log(GDPperc) + log(pop) +  popd, data=cdata)
-ma.lm2 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data =cdata)
-ma.lm3 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile, data = cdata)
+ma.lm <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear, data = cdata )
+ma.lm2 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = cdata )
+ma.lm3 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + internet + mobile, data = cdata )
+ma.lm4 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile,data = cdata )
+
 
 ###Create table
-stargazer(ma.lm,ma.lm2,ma.lm3,
+stargazer(ma.lm,ma.lm2,ma.lm3,ma.lm4,
           type='latex',header = F, 
           covariate.labels = mlabels,
+          out='4ma.text',
           dep.var.labels = 'Math Score',
           title="Table:Regression Estimates of Math Score",
           no.space = TRUE)
 
-```
 
-
-
-```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
 ###Reading
-re.lm <- lm(reading ~ log(GDPperc) + log(pop) +  popd,data = cdata)
+re.lm <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear, data = cdata )
 re.lm2 <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = cdata )
-re.lm3 <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile,data = cdata )
+re.lm3 <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + internet + mobile, data = cdata )
+re.lm4 <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile,data = cdata )
 
-stargazer(re.lm,re.lm2,re.lm3, type='latex',
+stargazer(re.lm,re.lm2,re.lm3,re.lm4, type='latex',
           header = FALSE, no.space = TRUE,
+          out='4re.text',
           covariate.labels = mlabels,
           dep.var.labels = 'Reading Score',
           title="Table:Regression Estimates of Reading Score")
 
 ###Problem Solving
-ps.lm <- lm(ps ~ log(GDPperc) + log(pop) +  popd, data = cdata)
-ps.lm2 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = cdata)
-ps.lm3 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile, data = cdata)
-stargazer(ps.lm,ps.lm2,ps.lm3, type ='text',
+ps.lm <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear, data = cdata )
+ps.lm2 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = cdata )
+ps.lm3 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + internet + mobile, data = cdata )
+ps.lm4 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile,data = cdata )
+
+stargazer(ps.lm,ps.lm2,ps.lm3,ps.lm4, type ='text',
           header = FALSE, no.space = TRUE,
+          out='4ps.text',
           covariate.labels = mlabels,
           dep.var.labels = 'Problem Solving Score',
           title="Table:Regression Estimates of Problem Solving Score")
 
 ##Comparison
-stargazer(ma.lm,ma.lm2,ma.lm3,re.lm,re.lm2,re.lm3,ps.lm,ps.lm2,ps.lm3,
-          type='latex', out='allresult.html',
+stargazer(ma.lm,ma.lm2,ma.lm3,ma.lm4,re.lm,re.lm2,re.lm3,re.lm4,ps.lm,ps.lm2,ps.lm3,ps.lm4,
+          type='latex', out='allresult.text',
+          header = FALSE, no.space =TRUE,
+          covariate.labels = mlabels,
+          title="Table:Detarminants of Student's Ability",
+          font.size='tiny')
+
+stargazer(ma.lm2,ma.lm4,re.lm2,re.lm4,ps.lm2,ps.lm4,
+          type='latex', out='comparison 2 result.text',
           header = FALSE, no.space =TRUE,
           covariate.labels = mlabels,
           title="Table:Detarminants of Student's Ability",
@@ -141,10 +152,30 @@ stargazer(ma.lm3,re.lm3,ps.lm3, type='latex',
           covariate.labels = mlabels,
           out="comparison.text",
           title="Table:Regression Estimates of Three Modeles")
+```
+
+##Diagnose
+```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
+plot(ma.lm4)
+
+stargazer(vif(ma.lm4),
+          type='latex', out='mavif.htlm',
+          header = FALSE, no.space =TRUE,
+          title='Variance Inflation Factors for Math')
+
+stargazer(vif(re.lm4),
+          type='latex', out='revif.htlm',
+          header = FALSE, no.space =TRUE,
+          title='Variance Inflation Factors for Reading')
+
+stargazer(vif(ps.lm4),
+          type='latex', out='psvif.htlm',
+          header = FALSE, no.space =TRUE,
+          title='Variance Inflation Factors for Problem Soving')
 
 ```
 
-#Analysis
+##Analysis
 According to the result, in the secound regressio, these variables are statistically significant.
 - Math:GDP per capita
 - Reading: GDP per capita, expenditure
@@ -162,6 +193,7 @@ Actually, there is some discussion that internet accessibility might bring rever
 
 #Correlation between Problem Solving and Internet
 We will do Diagnose about the regresion of Problem solving. The result shows,,,,
+
 ```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
 plot(ps.lm3)
 confint(ps.lm3)

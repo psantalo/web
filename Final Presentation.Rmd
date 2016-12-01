@@ -48,6 +48,7 @@ pisa <- pisa[1:41,]
 6. Result
 
 
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 
 
@@ -80,12 +81,37 @@ The data sources used to analyse if our hypothesis is correct have been obtained
 |IV|eyear|Number of years that children are legally obliged to attend school|
 |IV|internet|internet users (per 100 people). |
 |IV|mobile|Mobile cellular subscriptions (per 100 people)|
+=======
+##Methodology
+Dependent Variables
+
+|Variable Name|Description|
+|:---------------|:------------------------------------|
+|math|Mathmatics mean score(2012)                 |
+|reading|Readind mean score(2012)                 |
+|ps|Prolem Solving mean score(2012)               |
+
+##Methodology
+Indivendent Variables
+
+|Variable Name|Description|
+|:--------------|:-------------------------------------|
+|GDPperc|GDP per Capita (current US$)|
+|expend|Government expenditure on education, total (% of GDP)|
+|pop|Population, total|
+|popd| Population density (people per sq. km of land area)
+|rteacher|Primary school pupil-teacher ratio|
+|eyear|Number of years that children are legally obliged to attend school|
+|internet|internet users (per 100 people). |
+|mobile|Mobile cellular subscriptions (per 100 people)|
+>>>>>>> Stashed changes
 
 ##Methodology(Descriptive Statistics)
 ```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
 
 stargazer(cdata, type="latex",header = FALSE,
           title= 'Table: Summary statistics of the variables')
+
 ```
 
 ##Analysis
@@ -94,28 +120,44 @@ stargazer(cdata, type="latex",header = FALSE,
 mlabels <- c('log(GDPperc)', 'log(pop)','popd', 'rteacher', 'eyear', 'expend', 'internet','mobile','(intercept)')
 
 ###Math
-ma.lm <- lm(math ~ log(GDPperc) + log(pop) +  popd, data=data)
-ma.lm2 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = data)
-ma.lm3 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile, data = data)
+ma.lm <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear, data = cdata )
+ma.lm2 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = cdata )
+ma.lm3 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + internet + mobile, data = cdata )
+ma.lm4 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile,data = cdata )
+
 
 
 ###Reading
-re.lm <- lm(reading ~ log(GDPperc) + log(pop) +  popd,data = cdata)
+re.lm <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear, data = cdata )
 re.lm2 <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = cdata )
-re.lm3 <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile,data = cdata )
+re.lm3 <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + internet + mobile, data = cdata )
+re.lm4 <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile,data = cdata )
+
 
 ###Problem Solving
-ps.lm <- lm(ps ~ log(GDPperc) + log(pop) +  popd, data = cdata)
-ps.lm2 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = cdata)
-ps.lm3 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile, data = cdata)
+ps.lm <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear, data = cdata )
+ps.lm2 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = cdata )
+ps.lm3 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + internet + mobile, data = cdata )
+ps.lm4 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile,data = cdata )
+
 
 ##Comparison
-stargazer(ma.lm,ma.lm2,ma.lm3,re.lm,re.lm2,re.lm3,ps.lm,ps.lm2,ps.lm3,
-          type='latex',
+![alt ]
+
+##VIF
+stargazer(vif(ma.lm4),
+          type='latex', out='mavif.htlm',
           header = FALSE, no.space =TRUE,
-          covariate.labels = mlabels,
-          title="Table:Detarminants of Student's Ability",
-          font.size='tiny')
+          title='Variance Inflation Factors for Math')
+stargazer(vif(re.lm4),
+          type='latex', out='revif.htlm',
+          header = FALSE, no.space =TRUE,
+          title='Variance Inflation Factors for Reading')
+stargazer(vif(ps.lm4),
+          type='latex', out='psvif.htlm',
+          header = FALSE, no.space =TRUE,
+          title='Variance Inflation Factors for Problem Soving')
+
 ```
 
 ##Analysis of Problem Solving
