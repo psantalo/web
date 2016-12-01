@@ -47,8 +47,13 @@ pisa <- pisa[1:41,]
 5. Analysis
 6. Result
 
+##Introduction
 
-##Methodology(Dependent Variables)
+##Research Question
+
+##Data
+
+##Methodology (Dependent Variables)
 
 |Dependent Variable|Variable Name|Description|
 |:--------|:------------------|:------------------------|
@@ -56,7 +61,7 @@ pisa <- pisa[1:41,]
 |DV|reading|Readind mean score(2012)|
 |DV|ps|Prolem Solving mean score(2012)|
 
-##Methodology(Independent Variables)
+##Methodology (Independent Variables)
 |Indivendent Variable|Variable Name|Description|
 |:--------|:---------------|:---------------------------|
 |IV|GDPperc|GDP per Capita (current US$)|
@@ -68,7 +73,7 @@ pisa <- pisa[1:41,]
 |IV|internet|internet users (per 100 people). |
 |IV|mobile|Mobile cellular subscriptions (per 100 people)|
 
-##Methodology(Descriptive Statistics)
+##Methodology (Descriptive Statistics)
 ```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
 
 stargazer(cdata, type="latex",header = FALSE,
