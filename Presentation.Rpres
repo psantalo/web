@@ -1,0 +1,33 @@
+Presentation
+========================================================
+author: Yumi Komai and Pol Santaló
+date: 02-12-2016
+autosize: true
+
+Introduction
+========================================================
+The aim of our research is to analyse if there is a significant impact on students ability made by the following factors: GDP per capita, Government expenditure, Population, Population density, Primary school pupil-teacher ratio, Mandatory schoolarisation years, Internet users and Mobile subscriptions.
+
+**Hypothesis**
+
+The hypothesis of our research is that Internet accessibility has a more substantial impact on the students ability than the others.
+
+
+Methodology
+========================================================
+The aim of our research is to analyse if there is a significant impact on students ability made by the following factors: GDP per capita, Government expenditure, Population, Population density, Primary school pupil-teacher ratio, Mandatory schoolarisation years, Internet users and Mobile subscriptions.
+
+
+Slide With Code
+========================================================
+
+```{r}
+summary(cars)
+```
+
+Slide With Plot
+========================================================
+
+```{r, echo=FALSE}
+plot(cars)
+```
