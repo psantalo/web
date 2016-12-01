@@ -1,16 +1,32 @@
 ---
-title: "Final Presentation"
-output: revealjs::revealjs_presentation
+title: "Does the Interner Accessibility Improve Student's Ability?"
+author: "Pol De Santaló & Yumi Komai"
+date: "December 2, 2016"
+output:
+  beamer_presentation:
+    colortheme: beaver
+    fig_height: 5
+    fig_width: 8
+    slide_level: 2
+    theme: CambridgeUS
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-
+library(stargazer)
+library(magrittr)  
+library(ggplot2)
+library(interplot)  
+library(dplyr)  
+library(devtools)
+library(xlsx)
+library(knitr)
+library(DAAG)
 ```
 
 ```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
 ##Data install
-data <- read.xlsx("PISA_Data.xlsx",1)
+data <- read.xlsx("/Users/komaiyumi/Desktop/Social Sicence/web/Data/PISA_Data.xlsx",1)
 
 ##Data Cleaning
 cdata <- subset(data, select = c(1,3,4,5,6,7,9,10,12,14,16,17))
@@ -18,7 +34,7 @@ cdata <- cdata[,c(1,3,2,4,7,8,9,10,11,12,5,6)]
 
 #For Growth comparison
 ##Data install
-pisa <- read.xlsx("PISA_Data.xlsx",2)
+pisa <- read.xlsx("/Users/komaiyumi/Desktop/Social Sicence/web/Data/PISA_Data.xlsx",2)
 pisa <- pisa[1:41,]
 ```
 
@@ -31,17 +47,17 @@ pisa <- pisa[1:41,]
 6. Result
 
 
-##Methodology
-###Dependent Variables
+##Methodology(Dependent Variables)
+
 |Dependent Variable|Variable Name|Description|
-|:--------|:------------------|:----------------------------|
+|:--------|:------------------|:------------------------|
 |DV|math|Mathmatics mean score(2012)|
 |DV|reading|Readind mean score(2012)|
 |DV|ps|Prolem Solving mean score(2012)|
 
-###Independent Variables
+##Methodology(Independent Variables)
 |Indivendent Variable|Variable Name|Description|
-|:--------|:---------------|:-------------------------------|
+|:--------|:---------------|:---------------------------|
 |IV|GDPperc|GDP per Capita (current US$)|
 |IV|expend|Government expenditure on education, total (% of GDP)|
 |IV|pop|Population, total|
@@ -51,12 +67,11 @@ pisa <- pisa[1:41,]
 |IV|internet|internet users (per 100 people). |
 |IV|mobile|Mobile cellular subscriptions (per 100 people)|
 
-##Methodology
-###Descriptive Statistics
+##Methodology(Descriptive Statistics)
 ```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
-##Statistical Discriptions
-stargazer(cdata, type="text",header = FALSE,
-          title= 'Summary statistics of the variables')
+
+stargazer(cdata, type="latex",header = FALSE,
+          title= 'Table: Summary statistics of the variables')
 ```
 
 ##Analysis
@@ -79,28 +94,20 @@ re.lm3 <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expe
 ps.lm <- lm(ps ~ log(GDPperc) + log(pop) +  popd, data = cdata)
 ps.lm2 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = cdata)
 ps.lm3 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile, data = cdata)
-stargazer(ps.lm,ps.lm2,ps.lm3, type ='text',
-          header = FALSE, no.space = TRUE,
-          covariate.labels = mlabels,
-          dep.var.labels = 'Problem Solving Score',
-          title="Table:Regression Estimates of Problem Solving Score")
 
 ##Comparison
 stargazer(ma.lm,ma.lm2,ma.lm3,re.lm,re.lm2,re.lm3,ps.lm,ps.lm2,ps.lm3,
           type='latex',
           header = FALSE, no.space =TRUE,
           covariate.labels = mlabels,
-          out="allresult.html",
           title="Table:Detarminants of Student's Ability",
           font.size='tiny')
-
 ```
 
 ##Analysis of Problem Solving
 ```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
 
 ### adding the label based on GDP per capita
-summary(data$GDPperc)
 glabel <- cut(cdata$GDPperc, breaks=c(1754,10690,20580,31350,45720,149200),
     labels=c("low","middle-low","middle","middle-high","high"),
     right=FALSE,include_lowest=TRUE)
@@ -110,13 +117,13 @@ lcdata <- transform(cdata,GDPperc_label=glabel)
 pplot <- ggplot(lcdata,aes(x=ps,y=internet))+
   geom_point(aes(colour=GDPperc_label))+
     stat_smooth(method="lm")
+plot(pplot)
+
 ```
 
-
-#Analysis of Score Growth
-```{r,echo=FALSE}
+##Analysis of Score Growth
+```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE}
 ##Labeling
-summary(pisa$GDPperc)
 g2label <- cut(pisa$GDPperc, breaks=c(1754,10690,20580,31350,45720,149200),
     labels=c("low","middle-low","middle","middle-high","high"),
     right=FALSE,include_lowest=TRUE)
@@ -128,30 +135,25 @@ p <- ggplot(lpisa, aes(INTERNET.USERS.2012..per.100.people.,Score.growth))+
   geom_point(aes(colour = GDPperc_label))+
   stat_smooth(method="lm")+
   theme_bw()
-  
+plot(p)
+```
+
+##Analysis of Score Growth
+```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE} 
 ###Growth of the score and the number of internet users growth
 p2 <- ggplot(lpisa, aes(Internet.users.growth, Score.growth))+
   geom_point(aes(colour = GDPperc_label))
-
+plot(p2)
 ```
 
+##Finding and Limitation
+###Finding
+- Internet accessiblity would have a strong impact on student's ability.
+- However, the impact may weaker on thinking ability than academic ability.
+- If the internet accessibility improve, thinking ability might decrease.
 
-##Finding
+###Limitation
+- small sample size
+- just a comparison between 2003 and 2012
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
-```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

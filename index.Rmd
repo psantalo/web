@@ -61,9 +61,10 @@ Taking aveirability into account, we picked the following variables up as explan
 We have cleaned and merged the relevant data of both datasets. Then, we have generate tables and figures to relate the data with the aim of addressing, as well as possible, our researching question to begin to determine whether our hypothesis is correct or not.
 
 ```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
+
 #For Regression
 ##Data install
-data <- read.xlsx("PISA_Data.xlsx",1)
+data <- read.xlsx("/Users/komaiyumi/Desktop/Social Sicence/web/Data/PISA_Data.xlsx",1)
 
 ##Data Cleaning
 cdata <- subset(data, select = c(1,3,4,5,6,7,9,10,12,14,16,17))
@@ -71,7 +72,7 @@ cdata <- cdata[,c(1,3,2,4,7,8,9,10,11,12,5,6)]
 
 #For Growth comparison
 ##Data install
-pisa <- read.xlsx("PISA_Data.xlsx",2)
+pisa <- read.xlsx("/Users/komaiyumi/Desktop/Social Sicence/web/Data/PISA_Data.xlsx",2)
 pisa <- pisa[1:41,]
 ```
 
@@ -92,7 +93,7 @@ ma.lm2 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend,
 ma.lm3 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile, data = cdata)
 
 ###Create table
-stargazer(ma.lm,ma.lm2,ma.lm3,ma.lm4,
+stargazer(ma.lm,ma.lm2,ma.lm3,
           type='latex',header = F, 
           covariate.labels = mlabels,
           dep.var.labels = 'Math Score',
@@ -126,6 +127,13 @@ stargazer(ps.lm,ps.lm2,ps.lm3, type ='text',
           title="Table:Regression Estimates of Problem Solving Score")
 
 ##Comparison
+stargazer(ma.lm,ma.lm2,ma.lm3,re.lm,re.lm2,re.lm3,ps.lm,ps.lm2,ps.lm3,
+          type='latex', out='allresult.html',
+          header = FALSE, no.space =TRUE,
+          covariate.labels = mlabels,
+          title="Table:Detarminants of Student's Ability",
+          font.size='tiny')
+
 stargazer(ma.lm3,re.lm3,ps.lm3, type='latex',
           header = FALSE, no.space =TRUE,
           covariate.labels = mlabels,
@@ -134,7 +142,7 @@ stargazer(ma.lm3,re.lm3,ps.lm3, type='latex',
 
 ```
 
-##Analysis
+#Analysis
 According to the result, in the secound regressio, these variables are statistically significant.
 - Math:GDP per capita
 - Reading: GDP per capita, expenditure
@@ -153,8 +161,8 @@ Actually, there is some discussion that internet accessibility might bring rever
 #Correlation between Problem Solving and Internet
 We will do Diagnose about the regresion of Problem solving. The result shows,,,,
 ```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
-plot(ps.lm4)
-confint(ps.lm4)
+plot(ps.lm3)
+confint(ps.lm3)
 
 ### adding the label based on GDP per capita
 summary(data$GDPperc)
@@ -186,10 +194,12 @@ p <- ggplot(lpisa, aes(INTERNET.USERS.2012..per.100.people.,Score.growth))+
   geom_point(aes(colour = GDPperc_label))+
   stat_smooth(method="lm")+
   theme_bw()
+plot(p)
   
 ###Growth of the score and the number of internet users growth
 p2 <- ggplot(lpisa, aes(Internet.users.growth, Score.growth))+
   geom_point(aes(colour = GDPperc_label))
+plot(p2)
 
 ```
 
