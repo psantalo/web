@@ -51,7 +51,6 @@ Taking aveirability into account, we picked the following variables up as explan
 |Indivendent Variable|Variable Name|Description|
 |:--------|:---------------|:-------------------------------------------------|
 |IV|GDPperc|GDP per Capita (current US$)|
-|IV|expend|Government expenditure on education, total (% of GDP)|
 |IV|pop|Population, total|
 |IV|popd| Population density (people per sq. km of land area)
 |IV|rteacher|Primary school pupil-teacher ratio is the average number of pupils per teacher in primary school|
@@ -69,8 +68,8 @@ We have cleaned and merged the relevant data of both datasets. Then, we have gen
 data <- read.xlsx("/Users/komaiyumi/Desktop/Social Sicence/web/Data/PISA_Data.xlsx",1)
 
 ##Data Cleaning
-cdata <- subset(data, select = c(1,3,4,5,6,7,9,10,12,14,16,17))
-cdata <- cdata[,c(1,3,2,4,7,8,9,10,11,12,5,6)]
+cdata <- subset(data, select = c(1,3,4,5,6,7,9,10,12,14,16))
+cdata <- cdata[,c(1,3,2,4,7,8,9,10,11,5,6)]
 
 #For Growth comparison
 ##Data install
@@ -88,13 +87,13 @@ stargazer(cdata, type="latex",header = FALSE,
 
 ##Conducting Regression
 ###Create labels
-mlabels <- c('log(GDPperc)', 'log(pop)','popd', 'rteacher', 'eyear', 'expend', 'internet','mobile','(intercept)')
+mlabels <- c('log(GDPperc)', 'log(pop)','popd', 'rteacher', 'eyear', 'internet','mobile','(intercept)')
 
 ###Math
 ma.lm <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear, data = cdata )
-ma.lm2 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = cdata )
+ma.lm2 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear, data = cdata )
 ma.lm3 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + internet + mobile, data = cdata )
-ma.lm4 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile,data = cdata )
+ma.lm4 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + internet + mobile,data = cdata )
 
 
 ###Create table
@@ -109,9 +108,9 @@ stargazer(ma.lm,ma.lm2,ma.lm3,ma.lm4,
 
 ###Reading
 re.lm <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear, data = cdata )
-re.lm2 <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = cdata )
+re.lm2 <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear, data = cdata )
 re.lm3 <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + internet + mobile, data = cdata )
-re.lm4 <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile,data = cdata )
+re.lm4 <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + internet + mobile,data = cdata )
 
 stargazer(re.lm,re.lm2,re.lm3,re.lm4, type='latex',
           header = FALSE, no.space = TRUE,
@@ -122,9 +121,9 @@ stargazer(re.lm,re.lm2,re.lm3,re.lm4, type='latex',
 
 ###Problem Solving
 ps.lm <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear, data = cdata )
-ps.lm2 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = cdata )
+ps.lm2 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear, data = cdata )
 ps.lm3 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + internet + mobile, data = cdata )
-ps.lm4 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile,data = cdata )
+ps.lm4 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + internet + mobile, data = cdata )
 
 stargazer(ps.lm,ps.lm2,ps.lm3,ps.lm4, type ='text',
           header = FALSE, no.space = TRUE,
@@ -142,7 +141,7 @@ stargazer(ma.lm,ma.lm2,ma.lm3,ma.lm4,re.lm,re.lm2,re.lm3,re.lm4,ps.lm,ps.lm2,ps.
           font.size='tiny')
 
 stargazer(ma.lm2,ma.lm4,re.lm2,re.lm4,ps.lm2,ps.lm4,
-          type='latex', out='comparison 2 result.text',
+          type='latex', out='comparison 2 result.html',
           header = FALSE, no.space =TRUE,
           covariate.labels = mlabels,
           title="Table:Detarminants of Student's Ability",
@@ -244,6 +243,7 @@ plot(p)
 p2 <- ggplot(lpisa, aes(Internet.users.growth, Score.growth))+
   geom_point(aes(colour = GDPperc_label))
 plot(p2)
+
 
 ```
 
