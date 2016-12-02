@@ -109,26 +109,30 @@ The data sources used to analyse if our hypothesis is correct have been obtained
 |Variable Name|Description|
 |:---------------|:------------------------------------|
 |math|Mathmatics mean score(2012)      |
-|reading|Readind mean score(2012)      |
-|ps|Prolem Solving mean score(2012)   |
+|reading|Reading mean score(2012)      |
+|ps|Problem Solving mean score(2012)   |
 
-##Methodology
 ###Indivendent Variables
-
 |Variable Name|Description|
-|:--------------|:---------------------------------|
-|GDPperc|GDP per Capita (current US$)|
-|expend|Government expenditure on education, total (% of GDP)|
-|pop|Population, total|
-|popd| Population density (people per sq. km of land area)
-|rteacher|Primary school pupil-teacher ratio|
-|eyear|Compulsory education years in primary school|
+|:--------------|:------------------------------------|
 |internet|Internet users (per 100 people). |
 |mobile|Mobile cellular subscriptions (per 100 people)|
 
 ##Methodology
+###Controlled Variables
+|Variable Name|Description|
+|:--------------|:---------------------------------|
+|GDPperc|GDP per Capita (current US$)|
+|pop|Population, total|
+|popd| Population density (people per sq. km of land area)
+|rteacher|Primary school pupil-teacher ratio|
+|eyear|Compulsory education years in primary school|
+
+
+##Methodology
 ###Descriptive Statistics
-![Descriptive Statistics](Results/Descriptive Statistics.png)
+![Descriptive Statistics](Results/SD.png)
+
 
 ##Analysis
 ###Regression Result
@@ -160,7 +164,6 @@ ps.lm4 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + 
 ###Variance Inflation Factors
 Math,Reading, and Problem Solving
 ![vif](Results/vif.png)
-
 
 
 ##Analysis of Problem Solving
@@ -203,21 +206,12 @@ p <- ggplot(lpisa, aes(INTERNET.USERS.2012..per.100.people.,Score.growth))+
 plot(p)
 ```
 
-##Analysis of Score Growth
-```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE} 
-###Growth of the score and the number of internet users growth
-p2 <- ggplot(lpisa, aes(Internet.users.growth, Score.growth))+
-  geom_point(aes(colour = GDPperc_label),size=2)+
-  labs(x = "Internet Users Growth", y = "PS Score Growth")+
-  ggtitle("Internet Users Growth and PS Score Growth")+
-  theme_bw()
-plot(p2)
-```
 
 ##Findings and Limitations
 ###Findings
 - Internet accessiblity could have a strong impact on student's ability.
 - However, the impact could be weaker on problem solving ability than academic ability.
+- The result could be different if we categolized countries by GDP
 
 ###Limitations
 - Small sample size
