@@ -82,8 +82,9 @@ pisa <- pisa[1:41,]
 ```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
 
 ##Statistical Discriptions
-stargazer(cdata, type="text",header = FALSE,
-          title= 'Summary statistics of the variables')
+stargazer(cdata, type="latex",header = FALSE,
+          title= 'Summary statistics of the variables',
+          font.size='large',out='SD.html')
 
 ##Conducting Regression
 ###Create labels
@@ -157,6 +158,15 @@ stargazer(ma.lm3,re.lm3,ps.lm3, type='latex',
 ##Diagnose
 ```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
 plot(ma.lm4)
+
+##VIF
+v1 <- c('math...............:',vif(ma.lm4))
+v2 <- c('reading............:',vif(re.lm4))
+v3 <- c('problem solving:',vif(ps.lm4))
+
+stargazer(v1,v2,v3,type='text', header = FALSE, 
+          no.space =TRUE, 
+          font.size = 'tiny',out='vif.html')
 
 stargazer(vif(ma.lm4),
           type='latex', out='mavif.htlm',

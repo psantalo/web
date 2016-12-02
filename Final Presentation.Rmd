@@ -1,5 +1,5 @@
 ---
-title: "Does the Interner Accessibility Improve Student's Ability?"
+title: "Does the Internet Accessibility Improve Student's Ability?"
 author: "Pol De Santaló & Yumi Komai"
 date: "December 2, 2016"
 output:
@@ -41,15 +41,33 @@ pisa <- pisa[1:41,]
 
 ##Outline
 1. Introduction
-2. Research Question
-3. Data
+2. Research Question and Hypothesis
+3. Data Sources
 4. Methodology
-5. Analysis
-6. Result
+5. Result & Analysis
+6. Findings & Limitations
+
+##Introduction
+![](Pictures/internet-for-english.jpg)
+
+##Research Question and Hypothesis
+###Reserch Question
+- The aim of our research is to analyse if there is a significant impact on students ability made by the Internet accecibility.
+
+###Hypothesis
+- The hypothesis of our research is that Internet accessibility is likely to have a substantial impact, both positive and negative, on the students ability.
+
+
+##Data Sources
+###World DataBank
+- Collections of time series data on a variety of topics.
+
+###OECD(Programme for International Student Assessment (PISA))
+- Triennial international survey which aims to evaluate education systems worldwide by testing the skills and knowledge of 15-year-old students.
+
 
 ##Methodology
-Dependent Variables
-
+###Dependent Variables
 |Variable Name|Description|
 |:---------------|:------------------------------------|
 |math|Mathmatics mean score(2012)      |
@@ -57,7 +75,7 @@ Dependent Variables
 |ps|Prolem Solving mean score(2012)   |
 
 ##Methodology
-Indivendent Variables
+###Indivendent Variables
 
 |Variable Name|Description|
 |:--------------|:---------------------------------|
@@ -71,9 +89,11 @@ Indivendent Variables
 |mobile|Mobile cellular subscriptions (per 100 people)|
 
 ##Methodology
+###Descriptive Statistics
 ![Descriptive Statistics](Results/Descriptive Statistics.png)
 
 ##Analysis
+###Regression Result
 ```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
 ###Create labels
 mlabels <- c('log(GDPperc)', 'log(pop)','popd', 'rteacher', 'eyear', 'expend', 'internet','mobile','(intercept)')
@@ -99,8 +119,10 @@ ps.lm4 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + 
 ![Result](Results/2result.png)
 
 ##Analysis
-Variance Inflation Factors
+###Variance Inflation Factors
+Math,Reading, and Problem Solving
 ![vif](Results/vif.png)
+
 
 
 ##Analysis of Problem Solving
@@ -154,13 +176,18 @@ p2 <- ggplot(lpisa, aes(Internet.users.growth, Score.growth))+
 plot(p2)
 ```
 
-##Finding and Limitation
-###Finding
+##Findings and Limitations
+###Findings
 - Internet accessiblity could have a strong impact on student's ability.
 - However, the impact could be weaker on problem solving ability than academic ability.
 
-###Limitation
+###Limitations
 - Small sample size
 - Available data limitation
+
+##Questions?
+![](Pictures/Questions.jpg)
+
+
 
 
