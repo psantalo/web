@@ -9,7 +9,6 @@ output:
     fig_width: 8
     slide_level: 2
     theme: CambridgeUS
-header-includes: \usepackage{graphicx} \usepackage{booktabs}
 ---
 
 ```{r setup, include=FALSE}
@@ -23,6 +22,7 @@ library(devtools)
 library(xlsx)
 library(knitr)
 library(DAAG)
+library(jpeg)
 ```
 
 ```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
@@ -44,12 +44,17 @@ pisa <- pisa[1:41,]
 2. Research Question and Hypothesis
 3. Data Sources
 4. Methodology
-5. Analysis
-6. Result
+5. Result & Analysis
+6. Findings & Limitations
 
+##Introduction
+![](Pictures/internet-for-english.jpg)
+
+##Research Question and Hypothesis
+###Reserch Question
+- The aim of our research is to analyse if there is a significant impact on students ability made by the Internet accecibility.
 
 <<<<<<< HEAD
-
 ##Introduction
 The aim of our research is to analyse if there is a significant impact on students ability made by the following factors: GDP per capita, Government expenditure, Population, Population density, Primary school pupil-teacher ratio, Mandatory schoolarisation years, Internet users and Mobile subscriptions.
 Currently, academics seem to be divided about whether Internet accessibility is beneficial or not when improving the student's performance when studying.That is the reason why we thought it might be a good idea to analyse if Internet accessibility has a bigger impact than the other factors applied in this research and if the impact is positive or negative.
@@ -85,40 +90,78 @@ The data sources used to analyse if our hypothesis is correct have been obtained
 
 ##Methodology(Descriptive Statistics)
 ```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
+=======
+###Hypothesis
+- The hypothesis of our research is that Internet accessibility is likely to have a substantial impact, both positive and negative, on the students ability.
 
-stargazer(cdata, type="latex",header = FALSE,
-          title= 'Table: Summary statistics of the variables')
-```
+>>>>>>> origin/gh-pages
+
+##Data Sources
+###World DataBank
+- Collections of time series data on a variety of topics.
+
+###OECD(Programme for International Student Assessment (PISA))
+- Triennial international survey which aims to evaluate education systems worldwide by testing the skills and knowledge of 15-year-old students.
+
+
+##Methodology
+###Dependent Variables
+|Variable Name|Description|
+|:---------------|:------------------------------------|
+|math|Mathmatics mean score(2012)      |
+|reading|Readind mean score(2012)      |
+|ps|Prolem Solving mean score(2012)   |
+
+##Methodology
+###Indivendent Variables
+
+|Variable Name|Description|
+|:--------------|:---------------------------------|
+|GDPperc|GDP per Capita (current US$)|
+|expend|Government expenditure on education, total (% of GDP)|
+|pop|Population, total|
+|popd| Population density (people per sq. km of land area)
+|rteacher|Primary school pupil-teacher ratio|
+|eyear|Compulsory education years in primary school|
+|internet|Internet users (per 100 people). |
+|mobile|Mobile cellular subscriptions (per 100 people)|
+
+##Methodology
+###Descriptive Statistics
+![Descriptive Statistics](Results/Descriptive Statistics.png)
 
 ##Analysis
+###Regression Result
 ```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
 ###Create labels
 mlabels <- c('log(GDPperc)', 'log(pop)','popd', 'rteacher', 'eyear', 'expend', 'internet','mobile','(intercept)')
 
 ###Math
-ma.lm <- lm(math ~ log(GDPperc) + log(pop) +  popd, data=data)
-ma.lm2 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = data)
-ma.lm3 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile, data = data)
-
+ma.lm <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear, data = cdata )
+ma.lm2 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = cdata )
+ma.lm3 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + internet + mobile, data = cdata )
+ma.lm4 <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile,data = cdata )
 
 ###Reading
-re.lm <- lm(reading ~ log(GDPperc) + log(pop) +  popd,data = cdata)
+re.lm <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear, data = cdata )
 re.lm2 <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = cdata )
-re.lm3 <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile,data = cdata )
+re.lm3 <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + internet + mobile, data = cdata )
+re.lm4 <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile,data = cdata )
 
 ###Problem Solving
-ps.lm <- lm(ps ~ log(GDPperc) + log(pop) +  popd, data = cdata)
-ps.lm2 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = cdata)
-ps.lm3 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile, data = cdata)
-
-##Comparison
-stargazer(ma.lm,ma.lm2,ma.lm3,re.lm,re.lm2,re.lm3,ps.lm,ps.lm2,ps.lm3,
-          type='latex',
-          header = FALSE, no.space =TRUE,
-          covariate.labels = mlabels,
-          title="Table:Detarminants of Student's Ability",
-          font.size='tiny')
+ps.lm <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear, data = cdata )
+ps.lm2 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend, data = cdata )
+ps.lm3 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + internet + mobile, data = cdata )
+ps.lm4 <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + expend + internet + mobile,data = cdata )
 ```
+![Result](Results/2result.png)
+
+##Analysis
+###Variance Inflation Factors
+Math,Reading, and Problem Solving
+![vif](Results/vif.png)
+
+
 
 ##Analysis of Problem Solving
 ```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
@@ -171,13 +214,18 @@ p2 <- ggplot(lpisa, aes(Internet.users.growth, Score.growth))+
 plot(p2)
 ```
 
-##Finding and Limitation
-###Finding
+##Findings and Limitations
+###Findings
 - Internet accessiblity could have a strong impact on student's ability.
 - However, the impact could be weaker on problem solving ability than academic ability.
 
-###Limitation
-- small sample size
-- Data limitation
+###Limitations
+- Small sample size
+- Available data limitation
+
+##Questions?
+![](Pictures/Questions.jpg)
+
+
 
 
