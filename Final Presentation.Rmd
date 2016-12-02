@@ -73,21 +73,17 @@ pisa <- pisa[1:41,]
 |reading|Reading mean score(2012)      |
 |ps|Problem Solving mean score(2012)   |
 
+##Methodology
 ###Indivendent Variables
 |Variable Name|Description|
 |:--------------|:------------------------------------|
-|internet|Internet users (per 100 people). |
-|mobile|Mobile cellular subscriptions (per 100 people)|
-
-##Methodology
-###Controlled Variables
-|Variable Name|Description|
-|:--------------|:---------------------------------|
 |GDPperc|GDP per Capita (current US$)|
 |pop|Population, total|
 |popd| Population density (people per sq. km of land area)
 |rteacher|Primary school pupil-teacher ratio|
 |eyear|Compulsory education years in primary school|
+|internet|Internet users (per 100 people). |
+|mobile|Mobile cellular subscriptions (per 100 people)|
 
 ##Methodology
 ###Descriptive Statistics
