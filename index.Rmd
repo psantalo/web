@@ -254,5 +254,5 @@ B.Weyers. The Internet's Impact on Our Thinking. An exploration of the consequen
 
 World Data Bank. (http://databank.worldbank.org/data/home.aspx)
 
-OECD. Programme for the International Students Assessment. (http://www.oecd.org/pisa/)
+OECD. Programe for the International Students Assessment. (http://www.oecd.org/pisa/)
 
