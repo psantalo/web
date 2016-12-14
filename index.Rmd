@@ -247,3 +247,8 @@ plot(p2)
 
 ```
 #References
+
+R.Rizal and A.Steven. The Impact of Social Media to Students' Critical Thinking skills. The Asian Conference on Education. (2012) 
+
+B.Weyers. The Internet's Impact on Our Thinking. An exploration of the consequential implications on our cognitive thought process.
+
