@@ -257,12 +257,18 @@ GCm <- gvisGeoChart(cdata, locationvar = "country", colorvar = "math", options=l
 plot(GCm)
 
 GCr <- gvisGeoChart(cdata, locationvar = "country", colorvar = "reading", options=list(colors='#9601D5'))
-plot(GCr,tag='chart')
+plot(GCr)
 
 GCps <- gvisGeoChart(cdata, locationvar = "country", colorvar = "ps", options=list(colors='#D05E01'))
-plot(GCps,tag='chart')
+plot(GCps)
 
 ```
+![](Pictures/GCm.jpg)
+
+![](Pictures/GCr.jpg)
+
+![](Pictures/GCps.jpg)
+
 
 As is shown in the result, developed countries got relatively high score of all kinds of tests. However, the countries of which math and reading score is low (and Internet accessibility is low), they are likely not to cooperate the problem solving assessment. For example, only Malaysia had a result of problem solving in the Southeast Asia. In addition, two countries are removed in the South America, and several countries are also removed from Middle East. Thus, we need to be careful that more developing countries are removed from the result when we analyze the problem solving score.
 
