@@ -78,7 +78,7 @@ cdata <- cdata[,c(1,3,2,4,7,8,9,10,11,5,6)]
 pisa <- read.xlsx("/Users/komaiyumi/Desktop/Social Sicence/web/Data/PISA_Data.xlsx",2)
 pisa <- pisa[1:41,]
 
-##Showing resach countries
+##Countries Surveyed Map
 GCi <- gvisGeoChart(cdata, locationvar = "country", colorvar = "internet")
 plot(GCi)
 ```
@@ -156,7 +156,7 @@ stargazer(vif(re.lm2),
           header = FALSE, no.space =TRUE,
           title='Variance Inflation Factors for Reading')
 
-stargazer(vif(ps.lm2),
+stargazer(vif(ps.lm),
           type='latex', out='psvif.htlm',
           header = FALSE, no.space =TRUE,
           title='Variance Inflation Factors for Problem Soving')
@@ -201,7 +201,6 @@ pplot <- ggplot(lcdata,aes(x=ps,y=internet))+
 
 ```
 
-
 #Analysis about score growth
 ```{r,echo=FALSE}
 ##Labeling
@@ -224,22 +223,21 @@ p2 <- ggplot(lpisa, aes(Internet.users.growth, Score.growth))+
   geom_point(aes(colour = GDPperc_label))
 plot(p2)
 
-
-```
-#References
-
-R.Rizal and A.Steven. The Impact of Social Media to Students' Critical Thinking skills. The Asian Conference on Education. (2012) 
-
-B.Weyers. The Internet's Impact on Our Thinking. An exploration of the consequential implications on our cognitive thought process.
-
-World Data Bank. (http://databank.worldbank.org/data/home.aspx)
-
-OECD. Programme for the International Students Assessment. (http://www.oecd.org/pisa/)
-
-```{r,echo=FALSE}
-                   
 ##Seeing the result by givesGeoChart
-GCi <- gvisGeoChart(cdata, locationvar = "country", colorvar = "internet")
-print(GCi)
-plot(GCi)
+GCm <- gvisGeoChart(cdata, locationvar = "country", colorvar = "math", options=list(colors='#019FDE'))
+print(GCm)
+plot(GCm)
+
+GCr <- gvisGeoChart(cdata, locationvar = "country", colorvar = "reading", options=list(colors='#9601D5'))
+print(GCr)
+plot(GCr)
+
+GCps <- gvisGeoChart(cdata, locationvar = "country", colorvar = "ps", options=list(colors='#D05E01'))
+print(GCps)
+plot(GCps)
+
 ```
+
+
+
+
