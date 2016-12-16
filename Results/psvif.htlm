@@ -2,13 +2,12 @@
 \begin{table}[!htbp] \centering 
   \caption{Variance Inflation Factors for Problem Soving} 
   \label{} 
-\tiny 
-\begin{tabular}{@{\extracolsep{5pt}} cccccccc} 
+\begin{tabular}{@{\extracolsep{5pt}} ccccccc} 
 \\[-1.8ex]\hline 
 \hline \\[-1.8ex] 
-log(GDPperc) & log(pop) & popd & rteacher & eyear & expend & internet & mobile \\ 
+log(GDPperc) & log(pop) & popd & rteacher & eyear & internet & mobile \\ 
 \hline \\[-1.8ex] 
-$7.523$ & $2.222$ & $8.105$ & $1.938$ & $1.536$ & $2.043$ & $6.617$ & $4.625$ \\ 
+$4.796$ & $1.994$ & $5.457$ & $1.503$ & $1.534$ & $4.709$ & $3.936$ \\ 
 \hline \\[-1.8ex] 
 \end{tabular} 
 \end{table} 
