@@ -346,8 +346,10 @@ However, the plots don’t show any correlation between two variables. It might 
 #Findings, Limitations and Next Step
 ##Findings
 The following three points are the major findings through the research:
--	**Internet accessibility could have a strong impact on student’s ability.**
+- **Internet accessibility could have a strong impact on student’s ability.**
+
 -	**However, the impact could be weaker on the problem solving ability than academic ability**
+
 -	**The impact of internet accessibility on student’s ability would be different depends on the country’s GDP per capita.**
 
 ##Limitaions
