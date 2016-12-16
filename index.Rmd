@@ -1,8 +1,10 @@
 ---
-title: "Final_project.Rmd"
+title: "Does the Internet Accessibility Improve Student's Ability?"
+author: "Pol De Santaló & Yumi Komai"
 output:
   pdf_document: default
   html_document: default
+  word_document: default
 bibliography: bibliography.bib
 ---
 
@@ -227,20 +229,17 @@ stargazer(v1,v2,v3,type='latex', header = FALSE,
 This is a Variance Inflation Factors table.  This table shows that GDPperc, popd and internet have relatively high VIF, but all values are less than 5.5. Thus, we could conclude there is not serious multicollinearity problem
 
 ###Plots for diagnose
-1.Math
-　　
+1.Math  
 ```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis',fig.width=3.5, fig.height=3.5}
 plot(ma.lm2)
 ```
 　　
-2.Reading
-　　
+2.Reading  
 ```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis',fig.width=3.5, fig.height=3.5}
 plot(re.lm2)
 ```
 　　
-3.Problem Solving
-　　
+3.Problem Solving  
 ```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis',fig.width=2, fig.height=2}
 plot(ps.lm2)
 ```
@@ -370,7 +369,7 @@ As a next step, it would be necessary to **focus on two or three countries from 
 
 In addition, by focusing on transitions of test scores in a few countries, we could use panel data. We simply used the cross sectional data in this research because of the data availability, but research result will be more meaningful if we use panel data by analyzing the transition of score growth and Internet accessibility. 
 
-Also, we didn’t include student’s specific factors that may have influence on student’s ability, because we did the comparison between countries. If we analyze focusing on the transition of the scores in a country, we could include the specific factors such as parent’s income, parent’s education level and so on. It would make this research more meaningful. (see @test) (see @test2)
+Also, we didn’t include student’s specific factors that may have influence on student’s ability, because we did the comparison between countries. If we analyze focusing on the transition of the scores in a country, we could include the specific factors such as parent’s income, parent’s education level and so on. It would make this research more meaningful. 
 
 #reference
 
