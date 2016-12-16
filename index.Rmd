@@ -2,7 +2,8 @@
 title: "Does the Internet Accessibility Improve Student's Ability?"
 author: "Pol De Santaló & Yumi Komai"
 output:
-  pdf_document: default
+  pdf_document:
+         latex_engine: xelatex
   html_document: default
   word_document: default
 bibliography: bibliography.bib
@@ -47,10 +48,10 @@ The two different data sources used in this research are the follow:
 
 1.World Data Bank
 The World Data Bank is an analysis and visualisation tool that contains collections of time series data on a variety of topics. In this data sources plenty of data about a wide range of topics can be found, from GDP growth to CO2 emissions. 
-The World Data Bank is part of The World Bank, which is an international financial institution that provides loans to developing countries for capital programs. It comprises two institutions: the International Bank for Reconstruction and Development (IBRD), and the International Development Association (IDA). The World Bank is a component of the World Bank Group, which is part of the United Nations system. 
+The World Data Bank is part of The World Bank, which is an international financial institution that provides loans to developing countries for capital programs. It comprises two institutions: the International Bank for Reconstruction and Development (IBRD), and the International Development Association (IDA). The World Bank is a component of the World Bank Group, which is part of the United Nations system. (see @WDI)
 
 2.OECD (PISA)
-The second data source used in the research is the Programme for the International Students Assessment (PISA). PISA is a worldwide study by the Organisation for Economic Co-operation and Development (OECD) in member and non-member nations of 15-year-old school pupils' scholastic performance on mathematics, science, and reading. It was first performed in 2000 and then repeated every three years. It is done with a view to improving education policies and outcomes. It measures problem solving and cognition in daily life. 
+The second data source used in the research is the Programme for the International Students Assessment (PISA). PISA is a worldwide study by the Organisation for Economic Co-operation and Development (OECD) in member and non-member nations of 15-year-old school pupils' scholastic performance on mathematics, science, and reading. It was first performed in 2000 and then repeated every three years. It is done with a view to improving education policies and outcomes. It measures problem solving and cognition in daily life. (see @PISA)
 Most of the countries that appear in PISA are European, American or Asian. That means that the data used in this research does not contemplate African countries, therefore the analyses and the results of this research will only apply to countries of these continents. 
 
 Both datasets are completely open and they can be found in their respective web pages. In order to produce a tangible statistical analysis the relevant data for this research has been cleaned and merged from their web pages and, subsequently, tables and figures have been generated with the main aim of addressing, as well as possible, the research question to begin to determine whether our hypothesis is correct or not.
@@ -270,14 +271,14 @@ GCps <- gvisGeoChart(cdata, locationvar = "country", colorvar = "ps", options=li
 plot(GCps)
 
 ```
-![](Pictures/GCm.jpg)
-
-![](Pictures/GCr.jpg)
-
-![](Pictures/GCps.jpg)
+![](Pictures/GCm.jpg)  
+![](Pictures/GCr.jpg)  
+![](Pictures/GCps.jpg)  
 
 
 As is shown in the result, developed countries got relatively high score of all kinds of tests. However, the countries of which math and reading score is low (and Internet accessibility is low), they are likely not to cooperate the problem solving assessment. For example, only Malaysia had a result of problem solving in the Southeast Asia. In addition, two countries are removed in the South America, and several countries are also removed from Middle East. Thus, we need to be careful that more developing countries are removed from the result when we analyze the problem solving score.
+
+\pagebreak
 
 ###The number of internet users and the problem solving score
 ```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
