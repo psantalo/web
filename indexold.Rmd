@@ -1,6 +1,6 @@
 ---
 title: "Does the Internet Accessibility Improve Student's Ability?"
-author: "Pol De Santaló & Yumi Komai"
+author: "Pol De Santal?? & Yumi Komai"
 output:
   pdf_document: default
   html_document: default
@@ -24,18 +24,18 @@ library(jsonlite)
 ```
 
 #Introduction
-Currently, there is an on-going academic debate about the impact of Internet accessibility on the student’s academic ability. The points of view taking part in this debate are very diverse and mostly divergent. On the one hand, there are academics that argue that the Internet accessibility has a negative impact on the student’s academic ability, they think, for instance, that the management of social networks such as Facebook, Instagram or Twitter by youngsters, does not improve the student’s abilities, on the contrary, they consume their time and makes it difficult for them to assimilate new knowledge.
+Currently, there is an on-going academic debate about the impact of Internet accessibility on the student???s academic ability. The points of view taking part in this debate are very diverse and mostly divergent. On the one hand, there are academics that argue that the Internet accessibility has a negative impact on the student???s academic ability, they think, for instance, that the management of social networks such as Facebook, Instagram or Twitter by youngsters, does not improve the student???s abilities, on the contrary, they consume their time and makes it difficult for them to assimilate new knowledge.
 
-However, on the other side of the coin, there are other academics that believe exactly the contrary; that the Internet accessibility improves the student’s ability. They argue that easing the Internet accessibility to students eases the procedure to access information, which, at the same time, eases the learning and the knowledge absorption. 
+However, on the other side of the coin, there are other academics that believe exactly the contrary; that the Internet accessibility improves the student???s ability. They argue that easing the Internet accessibility to students eases the procedure to access information, which, at the same time, eases the learning and the knowledge absorption. 
 
-Since both academics sides do not seem to be willing to pave the way for an agreement on this issue, because the positions are completely divergent, this paper will try to give an answer to this academic argue analysing the impact of the Internet accessibility on the student’s academic ability.
+Since both academics sides do not seem to be willing to pave the way for an agreement on this issue, because the positions are completely divergent, this paper will try to give an answer to this academic argue analysing the impact of the Internet accessibility on the student???s academic ability.
 
 #Research Question and Hypothesis
-The research question of this paper is whether the Internet accessibility creates a significant impact on the student’s ability or not, in order to give an answer to the debate that is currently on-going at the academic level, as mentioned in the introduction.
+The research question of this paper is whether the Internet accessibility creates a significant impact on the student???s ability or not, in order to give an answer to the debate that is currently on-going at the academic level, as mentioned in the introduction.
 
-The hypothesis of this paper is that we consider that there is a significant impact, either positive or negative, of the Internet accessibility on the student’s ability because the academic research made until today, though divergent, points out that one of both academic points of view shall have a significant impact, thus we think that this significant impact could exist.
+The hypothesis of this paper is that we consider that there is a significant impact, either positive or negative, of the Internet accessibility on the student???s ability because the academic research made until today, though divergent, points out that one of both academic points of view shall have a significant impact, thus we think that this significant impact could exist.
 
-The research question does not try to give an absolute answer, but attempts to analyse and prove if there is a general tendency in a positive or negative direction, being aware that the huge amount of variables that can affect the student’s academic ability are not contemplated. 
+The research question does not try to give an absolute answer, but attempts to analyse and prove if there is a general tendency in a positive or negative direction, being aware that the huge amount of variables that can affect the student???s academic ability are not contemplated. 
 
 However, it attempts to give an answer having into account the variables used, thus the verisimilitude of the findings are strictly linked to the extend of the variables that have been had into account when doing the research.
 
@@ -47,10 +47,10 @@ The two different data sources used in this research are the follow:
 
 1.World Data Bank
 The World Data Bank is an analysis and visualisation tool that contains collections of time series data on a variety of topics. In this data sources plenty of data about a wide range of topics can be found, from GDP growth to CO2 emissions. 
-The World Data Bank is part of The World Bank, which is an international financial institution that provides loans to developing countries for capital programs. It comprises two institutions: the International Bank for Reconstruction and Development (IBRD), and the International Development Association (IDA). The World Bank is a component of the World Bank Group, which is part of the United Nations system. 
+The World Data Bank is part of The World Bank, which is an international financial institution that provides loans to developing countries for capital programs. It comprises two institutions: the International Bank for Reconstruction and Development (IBRD), and the International Development Association (IDA). The World Bank is a component of the World Bank Group, which is part of the United Nations system. (see @WDI)
 
 2.OECD (PISA)
-The second data source used in the research is the Programme for the International Students Assessment (PISA). PISA is a worldwide study by the Organisation for Economic Co-operation and Development (OECD) in member and non-member nations of 15-year-old school pupils' scholastic performance on mathematics, science, and reading. It was first performed in 2000 and then repeated every three years. It is done with a view to improving education policies and outcomes. It measures problem solving and cognition in daily life. 
+The second data source used in the research is the Programme for the International Students Assessment (PISA). PISA is a worldwide study by the Organisation for Economic Co-operation and Development (OECD) in member and non-member nations of 15-year-old school pupils' scholastic performance on mathematics, science, and reading. It was first performed in 2000 and then repeated every three years. It is done with a view to improving education policies and outcomes. It measures problem solving and cognition in daily life. (see @PISA)
 Most of the countries that appear in PISA are European, American or Asian. That means that the data used in this research does not contemplate African countries, therefore the analyses and the results of this research will only apply to countries of these continents. 
 
 Both datasets are completely open and they can be found in their respective web pages. In order to produce a tangible statistical analysis the relevant data for this research has been cleaned and merged from their web pages and, subsequently, tables and figures have been generated with the main aim of addressing, as well as possible, the research question to begin to determine whether our hypothesis is correct or not.
@@ -60,7 +60,7 @@ The tables and figures generated are established in a specific section of this r
 We have cleaned and merged the relevant data of both datasets. Then, we have generate tables and figures to relate the data with the aim of addressing, as well as possible, our researching question to begin to determine whether our hypothesis is correct or not.
 
 #Methodology
-In order to analyze how influential is the Internet accessibility over the student’s ability, tThis research uses a multiple regression. In the first place, in order to analyze how influential is the Internet accessibility over the student’s ability, In the first place, tthe dependent variables (DV) are the ones obtained from the PISA data source. These are three different variables.
+In order to analyze how influential is the Internet accessibility over the student???s ability, tThis research uses a multiple regression. In the first place, in order to analyze how influential is the Internet accessibility over the student???s ability, In the first place, tthe dependent variables (DV) are the ones obtained from the PISA data source. These are three different variables.
 
 |Dependent Variable|Variable Name|Description|
 |:--------|:------------------|:-----------------------------|
@@ -76,7 +76,7 @@ The data collected is from the year 2012.
 
 c) Problem solving:  This variable shows the score of the problem-solving exam of the students of the countries that took part in the Programme for International Student Assessment.
 
-Math score and reading score are used for majoring student’s academic ability and the assessment for both ability have been conducted everytime. On the contrary, problem solving assessment is introduced in 2003 at the first time. According to PISA, it “measures students’ capacity to respond to non-routine situations in order to achieve their potential as constructive and reflective citizens. “
+Math score and reading score are used for majoring student???s academic ability and the assessment for both ability have been conducted everytime. On the contrary, problem solving assessment is introduced in 2003 at the first time. According to PISA, it ???measures students??? capacity to respond to non-routine situations in order to achieve their potential as constructive and reflective citizens.?????
 
 2. The World Bank:
 On the other hand, Ithe research also contemplates independent variables (IV)s; those have been obtained from the World Data Bank and are the follows (the data collected is from the year 2012):
@@ -140,7 +140,7 @@ The following map shows the all surveyed countries colored by the number of inte
 ```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
 ##Countries Surveyed Map
 GCi <- gvisGeoChart(cdata, locationvar = "country", colorvar = "internet")
-plot(GCi)　
+plot(GCi)???
 ```
 ![](Pictures/GCi.jpg)
 
@@ -231,17 +231,17 @@ This is a Variance Inflation Factors table.  This table shows that GDPperc, popd
 ```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis',fig.width=3.5, fig.height=3.5}
 plot(ma.lm2)
 ```
-　　
+??????
 2.Reading  
 ```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis',fig.width=3.5, fig.height=3.5}
 plot(re.lm2)
 ```
-　　
+??????
 3.Problem Solving  
 ```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis',fig.width=3.5, fig.height=3.5}
 plot(ps.lm2)
 ```
-　　
+??????
 - Residual vs Fitted
  The three plots show that there is not serious heteroscedasticity.
 - Normal Q-Q
@@ -252,12 +252,12 @@ There seems to exist some expanding of each residual. Therefore, other variables
 All data are within the 0.5 line, therefore, there would be no data that affect strongly on the results.
 
 ##Analysis of Problem Solving
-As mentioned at the beginning, it is controversial whether Internet accessibility always bring positive effect on student’s abilities. Some research examines that student’s critical thinking ability, which is not related to academic ability, might be harmed because of too much information from twitter, Facebook and other SNSs.
+As mentioned at the beginning, it is controversial whether Internet accessibility always bring positive effect on student???s abilities. Some research examines that student???s critical thinking ability, which is not related to academic ability, might be harmed because of too much information from twitter, Facebook and other SNSs.
 
 Actually, the result of the regression shows the different result about the problem solving from the math and the reading. Therefore, this section examines more about the interpretation of the correlation between the problem solving and internet accessibility.
 
 ###Seeing the result by givesGeoChart
-Firstly, we compared the result by using the GeoChart. There is three GeoCharts: the blue one is math, the purple one is reading and the orange one is problem solving (green countries don’t have the problem solving test score.)
+Firstly, we compared the result by using the GeoChart. There is three GeoCharts: the blue one is math, the purple one is reading and the orange one is problem solving (green countries don???t have the problem solving test score.)
 
 ```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
 GCm <- gvisGeoChart(cdata, locationvar = "country", colorvar = "math", options=list(colors='#019FDE'))
@@ -329,7 +329,7 @@ plot(p)
 
 Now they have a negative correlation. It means that the more people use internet, the less point of score grow. However, considering the GDP per capita, red dots (low) are on the upper-left side and purple dots (high) are middle-right side. Furthermore, purple dots are likely to be close to zero. 
 
-Therefore, it could be possible to say that purple dot countries’ test score didn’t have a potential to increase so much in 9 years because their education system was already mature in 2003.  In contrast, red dot countries could have more potential to improve the score. Thus, it might be misleading to conclude that if the number of internet user increase, the score growth decrease.
+Therefore, it could be possible to say that purple dot countries??? test score didn???t have a potential to increase so much in 9 years because their education system was already mature in 2003.  In contrast, red dot countries could have more potential to improve the score. Thus, it might be misleading to conclude that if the number of internet user increase, the score growth decrease.
 
 ###Score Growth and Internet Users Growth
 Lastly, this plots examines the correlation between the score growth and the number of internet user growth. 
@@ -340,17 +340,17 @@ p2 <- ggplot(lpisa, aes(Internet.users.growth, Score.growth))+
   geom_point(aes(colour = GDPperc_label))
 plot(p2)
 ```
-However, the plots don’t show any correlation between two variables. It might be inferred that the number of internet user growth has few impact on the sore growth with high GDP per capita because the purple dots are relatively close to zero.
+However, the plots don???t show any correlation between two variables. It might be inferred that the number of internet user growth has few impact on the sore growth with high GDP per capita because the purple dots are relatively close to zero.
 
 
 #Findings, Limitations and Next Step
 ##Findings
 The following three points are the major findings through the research:
-- **Internet accessibility could have a strong impact on student’s ability.**
+- **Internet accessibility could have a strong impact on student???s ability.**
 
 -	**However, the impact could be weaker on the problem solving ability than academic ability**
 
--	**The impact of internet accessibility on student’s ability would be different depends on the country’s GDP per capita.**
+-	**The impact of internet accessibility on student???s ability would be different depends on the country???s GDP per capita.**
 
 ##Limitaions
 However, there are some limitations in this research.
@@ -365,11 +365,11 @@ PISA did the assessment mainly for OECD countries, so the picked-up countries ar
 As is mentioned in the Diagnose part, other variable would have a influence on the test scores. 
 
 ##To moving forward
-As a next step, it would be necessary to **focus on two or three countries from different level of GDP per capita** and analyze the correlation of test score and internet accessibility. It is because this research shows the impact of internet accessibility would be different depending on the country’s GDP per capita. Also, we couldn’t get enough score data from developing countries, so our research has data bias.
+As a next step, it would be necessary to **focus on two or three countries from different level of GDP per capita** and analyze the correlation of test score and internet accessibility. It is because this research shows the impact of internet accessibility would be different depending on the country???s GDP per capita. Also, we couldn???t get enough score data from developing countries, so our research has data bias.
 
 In addition, by focusing on transitions of test scores in a few countries, we could use panel data. We simply used the cross sectional data in this research because of the data availability, but research result will be more meaningful if we use panel data by analyzing the transition of score growth and Internet accessibility. 
 
-Also, we didn’t include student’s specific factors that may have influence on student’s ability, because we did the comparison between countries. If we analyze focusing on the transition of the scores in a country, we could include the specific factors such as parent’s income, parent’s education level and so on. It would make this research more meaningful. 
+Also, we didn???t include student???s specific factors that may have influence on student???s ability, because we did the comparison between countries. If we analyze focusing on the transition of the scores in a country, we could include the specific factors such as parent???s income, parent???s education level and so on. It would make this research more meaningful. 
 
 #reference
 
