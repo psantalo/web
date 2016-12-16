@@ -156,11 +156,9 @@ mlabels <- c('log(GDPperc)', 'log(pop)','popd', 'rteacher', 'eyear', 'internet',
 ma.lm <- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear, data = cdata )
 ma.lm2<- lm(math ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + internet + mobile,data = cdata )
 
-
 ###Reading
 re.lm <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear, data = cdata )
 re.lm2 <- lm(reading ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear + internet + mobile,data = cdata )
-
 
 ###Problem Solving
 ps.lm <- lm(ps ~ log(GDPperc) + log(pop) +  popd + rteacher + eyear, data = cdata )
@@ -189,13 +187,13 @@ stargazer(ps.lm,ps.lm2,
 ```
 
 ###The result of the first regressions
-Firstly, the variable internet and mobile are excluded from IV.  The result is (1), (3), and (5). In all results, GDP per capita has a strong positive correlation with three scores. If GDP per capita increase by 1%, the scores would increase around 20 to 26 points when other conditions being equal.  In addition, rteacher is negatively correlated to math and reading score. An additional increase of pupil-teacher ratio by 1% is associated with decreases of the math and reading score by around 3.5 point when other conditions being equal.
+Firstly, the variable internet and mobile are excluded from IV.  The result is (1) of each table. In all results, GDP per capita has a strong positive correlation with three scores. If GDP per capita increase by 1%, the scores would increase around 20 to 26 points when other conditions being equal.  In addition, rteacher is negatively correlated to math and reading score. An additional increase of pupil-teacher ratio by 1% is associated with decreases of the math and reading score by around 3.5 point when other conditions being equal.
 
 Therefore, it could be concluded that if GDP per capita increase or pupil-teacher ratio decrease, the math and reading score would increase when other conditions being equal. On the other hand, the problem solving score would increase only when GDP per capita increase. 
 
 ###The result of the second regressions
 1.Math and Reading Score
-Then, internet and mobile were included as IV, and the results are shown in (2), (4) and (6). First of all, the math and reading results are very similar.
+Then, internet and mobile were included as IV, and the results are shown in (2) of each table. First of all, the math and reading results are very similar.
 
 Internet has a positive correlation and they are significant at 1% level. If the number of internet users (per100) increase by 1, the math score would increase by 2.570 and the reading score would increase by 2.154 when other things being equal.
 
@@ -240,7 +238,7 @@ plot(re.lm2)
 ```
 　　
 3.Problem Solving  
-```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis',fig.width=2, fig.height=2}
+```{r , echo=FALSE, comment=NA, warning=FALSE, error=FALSE, message=FALSE, results='asis',fig.width=3.5, fig.height=3.5}
 plot(ps.lm2)
 ```
 　　
@@ -348,20 +346,20 @@ However, the plots don’t show any correlation between two variables. It might 
 #Findings, Limitations and Next Step
 ##Findings
 The following three points are the major findings through the research:
-**-	Internet accessibility could have a strong impact on student’s ability.**
-**-	However, the impact could be weaker on the problem solving ability than academic ability**
-**-	The impact of internet accessibility on student’s ability would be different depends on the country’s GDP per capita.**
+-	**Internet accessibility could have a strong impact on student’s ability.**
+-	**However, the impact could be weaker on the problem solving ability than academic ability**
+-	**The impact of internet accessibility on student’s ability would be different depends on the country’s GDP per capita.**
 
 ##Limitaions
 However, there are some limitations in this research.
 
-**-	Small sample size**
+-	**Small sample size**
 PISA conducted the assessment for 34 OECD countries and 31 partnership countries, and the less number of countries cooperated with the problem solving assessment. Therefore, the sample size was not enough to run the effective multiple regressions.
 
-**-	Available data limitation**
+-	**Available data limitation**
 PISA did the assessment mainly for OECD countries, so the picked-up countries are originally biased (developed countries from Europe, North and South America and Asia). If more developing countries are added to the data, the result could be different., 
 
-**-	Finding Proper Variables**
+-	**Finding Proper Variables**
 As is mentioned in the Diagnose part, other variable would have a influence on the test scores. 
 
 ##To moving forward
