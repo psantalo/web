@@ -2,10 +2,10 @@
 title: "Does the Internet Accessibility Improve Student's Ability?"
 author: "Pol De Santaló & Yumi Komai"
 output:
-  pdf_document:
-         latex_engine: xelatex
-  html_document: default
   word_document: default
+  pdf_document:
+    latex_engine: xelatex
+  html_document: default
 bibliography: bibliography.bib
 ---
 
@@ -25,9 +25,9 @@ library(jsonlite)
 ```
 
 #Introduction
-Currently, there is an on-going academic debate about the impact of Internet accessibility on the student’s academic ability. The points of view taking part in this debate are very diverse and mostly divergent. On the one hand, there are academics that argue that the Internet accessibility has a negative impact on the student’s academic ability, they think, for instance, that the management of social networks such as Facebook, Instagram or Twitter by youngsters, does not improve the student’s abilities, on the contrary, they consume their time and makes it difficult for them to assimilate new knowledge.
+Currently, there is an on-going academic debate about the impact of Internet accessibility on the student’s academic ability. The points of view taking part in this debate are very diverse and mostly divergent. On the one hand, there are academics that argue that the Internet accessibility has a negative impact on the student’s academic ability,(see @rizalimpact) they think, for instance, that the management of social networks such as Facebook, Instagram or Twitter by youngsters, does not improve the student’s abilities, on the contrary, they consume their time and makes it difficult for them to assimilate new knowledge.
 
-However, on the other side of the coin, there are other academics that believe exactly the contrary; that the Internet accessibility improves the student’s ability. They argue that easing the Internet accessibility to students eases the procedure to access information, which, at the same time, eases the learning and the knowledge absorption. 
+However, on the other side of the coin, there are other academics that believe exactly the contrary; that the Internet accessibility improves the student’s ability. (see @weyersinternet) They argue that easing the Internet accessibility to students eases the procedure to access information, which, at the same time, eases the learning and the knowledge absorption. 
 
 Since both academics sides do not seem to be willing to pave the way for an agreement on this issue, because the positions are completely divergent, this paper will try to give an answer to this academic argue analysing the impact of the Internet accessibility on the student’s academic ability.
 
@@ -39,6 +39,14 @@ The hypothesis of this paper is that we consider that there is a significant imp
 The research question does not try to give an absolute answer, but attempts to analyse and prove if there is a general tendency in a positive or negative direction, being aware that the huge amount of variables that can affect the student’s academic ability are not contemplated. 
 
 However, it attempts to give an answer having into account the variables used, thus the verisimilitude of the findings are strictly linked to the extend of the variables that have been had into account when doing the research.
+
+#Literature Review
+
+## Internet Seen as Positive Influence on Education but Negative on Morality in Emerging and Developing Nations (see @poushter2015internet)
+This report is analyzing "technology use in 32 emerging and developing nations, including internet access rates, and cell phone and smartphone ownership. It also examines internet and mobile activities, as well as public opinion regarding the internet’s impact on society."(@poushter2015internet) This report cast doubt on the idea that Internet will bring a good effect on the nation's long-term growth because it could be harmful on morality of people. Also, this report implied that the result would be differebt between emarging/developing countries and developed countries. Internet access brought a positive influence of education of clear majority of people in emerging and developing countries. On the other hands, only 36% people say it is a lositive for thieir country's politicial system, while three-in-ten say it is a bad influence in emerging and developing countries. In addition, people are even more leery of the inernet's efect on morality, ane 42% day it is a bad influence. However, this report concludes that across the emerging and develoving nations surveyed, internet access is closely linked to national income.
+
+## Expanding Internet access to the rural poor in Africa
+This report is about the Internet accessibility in Africa. Internet has the potential to play a significant role in reducing poverty and promoting sustainable development, especially in rural areas. The paper argues that liberalization of the telecommunications sector combined with targeted, auctioned subsidies to local entrepreneurs are both likely to have a significant impact on rural Internet access rates and poverty. (see @kenny2000expanding)
 
 #Data
 In this research, the data gathering has been obtained from two different data sources in order to address the researching question and prove if the initial hypothesis is right or not. 
